@@ -13,4 +13,4 @@ alias hipposcrape='python2 /home/vagrant/others/holberton-python-scripts/project
 alias hipporead='python2 /home/vagrant/others/holberton-python-scripts/holberton-read_t.py'
 
 # Custom prompt
-PS1='[harukai@kaenatsu-\h $(pwd)]\$ '
+PS1='[harukai@kaenatsu-\h:\w]\$ '
