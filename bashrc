@@ -1,4 +1,3 @@
-
 # Custom alias
 alias vi='vim'
 alias rbr='source ~/.bashrc'
@@ -8,9 +7,11 @@ alias gpush='git push origin'
 alias mpush='git push origin master'
 alias gcomm='git commit -m'
 
-# Custom scripts
-alias hipposcrape='python2 /home/vagrant/others/holberton-python-scripts/project-all_scraper.py'
-alias hipporead='python2 /home/vagrant/others/holberton-python-scripts/holberton-read_t.py'
+# Arch custom prompt
+PS1='[harukai@kaenatsu-\h \W]\$ '
 
-# Custom prompt
-PS1='[harukai@kaenatsu-\h:\w]\$ '
+# Kali prompt
+PS1='\[\033[01;31m\]harukai@kaenatsu-\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+# Ubuntu prompt
+PS1='harukai@kaenatsu-ubuntu:\w$ '
