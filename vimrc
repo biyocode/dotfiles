@@ -14,14 +14,15 @@ set mouse=a         " enable mouse support
 set visualbell      " blink cursor on error, instead of beeping
 set laststatus=2    " always show statusline (even with only single window)
 set ruler           " show line and column number of the cursor on right of statusline
+set showmatch       " highlight matching parentheses / brackets
+set wildmenu        " visual autocomplete for command menu
+set encoding=utf-8  " set encoding to UTF-8
 
 
 """" Custom spacing
 filetype plugin indent off
-autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4
-autocmd FileType sh setlocal expandtab tabstop=4 shiftwidth=4
-autocmd FileType html setlocal expandtab tabstop=4 shiftwidth=4
-autocmd FileType css setlocal expandtab tabstop=4 shiftwidth=4
-" show existing tab with 4 spaces width
-" when indenting with '>', use 4 spaces width
-" On pressing tab, insert 4 spaces
+set expandtab       " convert tab to spaces
+set tabstop=4       " sets tab to 4 spaces
+set shiftwidth=4    " sets number of spaces to tab
+
+autocmd FileType c setlocal tabstop=8
