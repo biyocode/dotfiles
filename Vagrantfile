@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
   #  config.vm.box = "offensive-security/kali-linux"
   # end
 
-  config.vm.synced_folder "../shared_vms", "/shared"
+  config.vm.synced_folder "shared_vms/", "/home/vagrant/shared"
   
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
