@@ -15,11 +15,14 @@ import subprocess
 import os
 from sys import argv
 
-def run_pass(pass_target=None):
+def run_pass(pass_target=None, multi=None):
     """Runs the package 'pass' on your linux machine
 
+    Not on multi-mode by default, if multi == 0, then it is on.
+
     Args:
-        pass_target(str): The folder/application in your Password Store
+        pass_target (str): The folder/application in your Password Store
+        multi (int): 0 or None
 
     Returns:
         output_string(str): Your password after decryption via passphrase
@@ -38,7 +41,10 @@ def run_pass(pass_target=None):
                             stdout=subprocess.PIPE)
     output = proc.communicate()[0]
     output_string = output.decode("utf-8")
-    return output_string.strip()
+    if multi != None:
+        return outout_string.strip().split()
+    else:
+        return output_string.strip()
 
 def create_origin(key=None, user=None, repo_name=None):
     os.system("git remote add origin https://{}:{}@github.com/{}/{}.git".format(user, key, user, repo_name))
