@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+sudo ls /var/cache/pacman/pkg/ | wc -l
+du -sh /var/cache/pacman/pkg/
+echo "Do you want to wipe package cache? (y/n)"
+read -r ARG
+if [ "$ARG" == 'y' ]
+then
+    sudo paccache -r
+    sudo pacman -Sc
+else
+    echo "Exiting..."
+fi
+echo "New stats:"
+sudo ls /var/cache/pacman/pkg/ | wc -l
+du -sh /var/cache/pacman/pkg/

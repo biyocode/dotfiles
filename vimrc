@@ -11,7 +11,7 @@ colorscheme desert
 set number          " show line numbers
 set wrap            " wrap lines
 set mouse=a         " enable mouse support
-set visualbell      " blink cursor on error, instead of beeping
+set novisualbell    " no blink no sound
 set laststatus=2    " always show statusline (even with only single window)
 set ruler           " show line and column number of the cursor on right of statusline
 set showmatch       " highlight matching parentheses / brackets
