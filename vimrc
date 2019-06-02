@@ -26,3 +26,10 @@ set tabstop=4       " sets tab to 4 spaces
 set shiftwidth=4    " sets number of spaces to tab
 
 autocmd FileType c setlocal tabstop=8
+
+""" Konsole
+"augroup python
+"    autocmd!
+"    autocmd FileType python
+"                \   syn keyword pythonBuilt self
+"augroup end

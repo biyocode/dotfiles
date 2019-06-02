@@ -1,15 +1,14 @@
-# Arch custom prompt
+# Vagrant Arch custom prompt
 PS1='[harukai@kaenatsu-\h \w]\$ '
-
-# Kali prompt
+# Vagrant Kali prompt
 PS1='\[\033[01;31m\]harukai@kaenatsu-\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-
-# Ubuntu prompt
+# Vagrant Ubuntu prompt
 PS1='harukai@kaenatsu-ubuntu:\w$ '
 
-# Alias functions
+alias gcommgit='echo'
 gcomm() {
-    git commit -m "$*"
+    # git commit -m "$1"
+    gcommgit 'hello'
 }
 
 # Custom alias
