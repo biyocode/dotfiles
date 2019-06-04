@@ -17,6 +17,10 @@ set ruler           " show line and column number of the cursor on right of stat
 set showmatch       " highlight matching parentheses / brackets
 set wildmenu        " visual autocomplete for command menu
 set encoding=utf-8  " set encoding to UTF-8
+set hlsearch        " highlights searches
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 
 """" Custom spacing
