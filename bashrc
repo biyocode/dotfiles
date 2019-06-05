@@ -26,3 +26,8 @@ alias hgcc='gcc -Wall -Werror -Wextra -pedantic'
 alias mynetip='curl "ifconfig.me";echo'
 alias untargz='tar -xvzf'
 alias untargz2='tar -xvjf'
+
+# Bash behavior
+#  -> Tab auto-complete
+bind "TAB:menu-complete"
+bind "set show-all-if-ambiguous on"
