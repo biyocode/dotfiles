@@ -1,7 +1,9 @@
 <h1 align="center">My Dotfiles and Scripts on Linux</h1>
 <p align="center">
-  <img src="https://images.unsplash.com/photo-1555532538-dcdbd01d373d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1131&q=80" height=400px>
+  <img src="https://images.unsplash.com/photo-1555532538-dcdbd01d373d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1131&q=80" height=450px>
 </p>
+
+A collection of the dotfiles and scripts I use.
 
 ## Repository Contents :file_folder:
 
