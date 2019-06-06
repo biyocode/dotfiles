@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Copies from host to docker container
+# sudo docker cp [src] [containerid]:/[dest]
+echo "Enter source file name:"
+read SRC
+echo "Enter Container ID"
+read CONTAINERID
+echo "Enter destination file name"
+read DEST
+sudo docker cp "$SRC" "$CONTAINERID":/"$DEST"
