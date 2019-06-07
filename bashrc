@@ -5,11 +5,17 @@ PS1='\[\033[01;31m\]harukai@kaenatsu-\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\
 # Vagrant Ubuntu prompt
 PS1='harukai@kaenatsu-ubuntu:\w$ '
 
-# Git alias/functions
+# Easy git commit
 gcomm() {
     GITMESSAGE="$*"
     git commit -m "$GITMESSAGE"
 }
+
+# Checks file/folder size of first argument
+function fsize() {
+    du -sh "$1"
+}
+
 alias gpush='git push origin'
 alias mpush='git push origin master'
 alias gstat='git status .'

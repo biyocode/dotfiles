@@ -27,7 +27,7 @@ if __name__ == "__main__":
         print("Needs 2 arguments: GITHUB_USER, GITHUB_REPO")
     else:
         user = argv[1]
-        repo_name = args[2]
+        repo_name = argv[2]
         key = passpy.run_pass(settings.PASS_GITREMOTE)
         create_origin(key, user, repo_name)
         del key
