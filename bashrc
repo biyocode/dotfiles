@@ -19,9 +19,19 @@ function fsize() {
 # Creates python shebang file
 function createpy() {
     PYFILE="$1"
-    touch "$PYFILE"
-    echo "#!/usr/bin/env python3" >> "$PYFILE"
-    vi "$PYFILE"
+    if [[ $PYFILE == *".py"* ]]
+    then
+        touch "$PYFILE"
+        echo "#!/usr/bin/env python3" >> "$PYFILE"
+        chmod u+x "$PYFILE"
+        vim "$PYFILE"
+    else
+        touch "$PYFILE.py"
+        PYFILEPY="$PYFILE.py"
+        echo "#!/usr/bin/env python3" >> "$PYFILEPY"
+        chmod u+x "$PYFILEPY"
+        vim "$PYFILEPY"
+    fi
 }
 
 alias gpush='git push origin'
