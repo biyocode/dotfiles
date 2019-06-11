@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# ARCH CLEANER
 sudo ls /var/cache/pacman/pkg/ | wc -l
 du -sh /var/cache/pacman/pkg/
 echo "Do you want to wipe package cache? (y/n)"
@@ -13,3 +14,15 @@ fi
 echo "New stats:"
 sudo ls /var/cache/pacman/pkg/ | wc -l
 du -sh /var/cache/pacman/pkg/
+
+du -sh ~/.cache/
+echo "Do you want to wipe ~/.cache/? (y/n)"
+read -r ARG
+if [ "$ARG" == 'y' ]
+then
+    rm -rf ~/.cache/*
+else
+    echo "Exiting..."
+fi
+echo "New stats:"
+du -sh ~/.cache/

@@ -16,11 +16,20 @@ function fsize() {
     du -sh "$1"
 }
 
+# Creates python shebang file
+function createpy() {
+    PYFILE="$1"
+    touch "$PYFILE"
+    echo "#!/usr/bin/env python3" >> "$PYFILE"
+    vi "$PYFILE"
+}
+
 alias gpush='git push origin'
 alias mpush='git push origin master'
 alias gstat='git status .'
 alias gdiff='git diff'
 alias gadd='git add'
+alias gpull='git pull origin'
 
 # Custom alias
 alias lll='ls -la'
@@ -30,8 +39,11 @@ alias rbr='source ~/.bashrc'
 alias cls='printf "\033c"'
 alias hgcc='gcc -Wall -Werror -Wextra -pedantic'
 alias mynetip='curl "ifconfig.me";echo'
-alias untargz='tar -xvzf'
-alias untargz2='tar -xvjf'
+alias ux='chmod u+x'
+
+# Custom scripts
+alias gitremotetoken=''
+alias cleaner=''
 
 # Bash behavior
 #  -> Tab auto-complete
