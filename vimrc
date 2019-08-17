@@ -18,6 +18,7 @@ set showmatch       " highlight matching parentheses / brackets
 set wildmenu        " visual autocomplete for command menu
 set encoding=utf-8  " set encoding to UTF-8
 set hlsearch        " highlights searches
+set relativenumber  " for checking how many lines to move up or down
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
