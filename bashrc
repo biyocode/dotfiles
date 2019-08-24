@@ -1,9 +1,15 @@
+# +OUTDATED
 # Vagrant Arch custom prompt
 PS1='[harukai@kaenatsu-\h \w]\$ '
 # Vagrant Kali prompt
 PS1='\[\033[01;31m\]harukai@kaenatsu-\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 # Vagrant Ubuntu prompt
 PS1='harukai@kaenatsu-ubuntu:\w$ '
+
+# ARCH STUFF
+alias recentinstalled='grep " installed " /var/log/pacman.log'
+alias packagelist='sudo pacman -Qi | egrep "^(Name|Installed)" | cut -f2 -d":" | tr "\nK" " \n" | sort -nrk 2 | less'
+alias dxdiag='hardinfo'
 
 # Easy git commit
 gcomm() {
@@ -40,6 +46,7 @@ alias gstat='git status .'
 alias gdiff='git diff'
 alias gadd='git add'
 alias gpull='git pull origin'
+alias mpull='git pull origin master'
 
 # Custom alias
 alias lll='ls -la'
@@ -50,6 +57,8 @@ alias cls='printf "\033c"'
 alias hgcc='gcc -Wall -Werror -Wextra -pedantic'
 alias mynetip='curl "ifconfig.me";echo'
 alias ux='chmod u+x'
+alias ..='cd ..'
+alias biggestfile='ncdu ~'
 
 # Custom scripts
 alias gitremotetoken=''
