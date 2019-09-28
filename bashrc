@@ -1,11 +1,3 @@
-# +OUTDATED
-# Vagrant Arch custom prompt
-PS1='[harukai@kaenatsu-\h \w]\$ '
-# Vagrant Kali prompt
-PS1='\[\033[01;31m\]harukai@kaenatsu-\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-# Vagrant Ubuntu prompt
-PS1='harukai@kaenatsu-ubuntu:\w$ '
-
 # ARCH STUFF
 alias recentinstalled='grep " installed " /var/log/pacman.log'
 alias packagelist='sudo pacman -Qi | egrep "^(Name|Installed)" | cut -f2 -d":" | tr "\nK" " \n" | sort -nrk 2 | less'
@@ -35,6 +27,9 @@ function createpy() {
         touch "$PYFILE.py"
         PYFILEPY="$PYFILE.py"
         echo "#!/usr/bin/env python3" >> "$PYFILEPY"
+        echo "" >> "$PYFILEPY"
+        echo 'if __name__ == "__main__":' >> "$PYFILEPY"
+        echo "    pass" >> "$PYFILEPY"
         chmod u+x "$PYFILEPY"
         vim "$PYFILEPY"
     fi
