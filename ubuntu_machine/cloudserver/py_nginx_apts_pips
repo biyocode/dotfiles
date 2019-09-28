@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Installs the following for FLASK env:
+#+ nginx
+#+ python3-pip
+#+ python3-venv
+#+ ufw
+#++ Sets basic settings
+#+ supervisor
+
+echo "Setting up apts and pips"
+
+echo -n "  -> Ope test server port 5000? (y/n) "
+read -r FLASK_DEBUG
+
+sudo apt update && upgrade
+sudo apt install -y nginx
+sudo apt install -y python3-pip
+sudo apt install -y python3-venv
+sudo apt install -y ufw
+sudo apt install -y supervisor
+
+sudo ufw allow ssh
+sudo ufw default allow outgoing
+sudo ufw default deny incoming
+if [ "$FLASK_DEBUG" == "y" ]
+then
+    sudo ufw allow 5000
+fi
+sudo ufw allow http/tcp
+
+sudo ufw -y enable
+echo "  -> Your ufw settings are as follows:"
+sudo ufw status
+
+
+# Find way to install pips

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Sets up the username for an Ubuntu 18.04 LTS server
+
+echo "Setting usernames..."
+echo -n "  -> Your hostname: "
+read -r HOSTNAME
+echo -n "    -> Your hostname has been set to " 
+hostname
+echo -n "  -> Your new server admin username: "
+read -r USERNAME
+echo -n "  -> Your new server admin username's password: "
+read -r USERNAME_PASSWORD
