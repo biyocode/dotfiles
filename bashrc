@@ -1,20 +1,26 @@
 # ARCH STUFF
+# Checks recently installed packages
 alias recentinstalled='grep " installed " /var/log/pacman.log'
+# Checks package list
 alias packagelist='sudo pacman -Qi | egrep "^(Name|Installed)" | cut -f2 -d":" | tr "\nK" " \n" | sort -nrk 2 | less'
+# Checks system info in a UI
 alias dxdiag='hardinfo'
 
 # Easy git commit
+# gcomm [THIS IS YOUR MESSAGE]
 gcomm() {
     GITMESSAGE="$*"
     git commit -m "$GITMESSAGE"
 }
 
 # Checks file/folder size of first argument
+# fsize [FILE/FOLDERNAME]
 function fsize() {
     du -sh "$1"
 }
 
-# Creates python shebang file
+# Creates python file with shebang and main, then sets ux permissions
+# createpy [FILENAME]
 function createpy() {
     PYFILE="$1"
     if [[ $PYFILE == *".py"* ]]
@@ -32,6 +38,29 @@ function createpy() {
         echo "    pass" >> "$PYFILEPY"
         chmod u+x "$PYFILEPY"
         vim "$PYFILEPY"
+    fi
+}
+
+# Json prettifier using python tools
+# prettyjson [FILENAME] [NEW_FILENAME]
+function prettyjson() {
+    JSONFILE="$1"
+    NEW_JSONFILE="$2"
+    if [[ $NEW_JSONFILE == *".json"* ]]
+    then
+        if python -m json.tool $JSONFILE >> $NEW_JSONFILE 
+        then
+            echo "Formatted and created $NEW_JSONFILE"
+        else
+            echo "ERROR: Either file not found or file not in json format."
+        fi
+    else
+        if python -m json.tool $JSONFILE >> "$NEW_JSONFILE.json"
+        then
+            echo "Formatted and created $NEW_JSONFILE.json"
+        else
+            echo "ERROR: Either file not found or file not in json format."
+        fi
     fi
 }
 
