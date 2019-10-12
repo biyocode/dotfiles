@@ -27,6 +27,9 @@ function createpy() {
     then
         touch "$PYFILE"
         echo "#!/usr/bin/env python3" >> "$PYFILE"
+        echo "" >> "$PYFILEPY"
+        echo 'if __name__ == "__main__":' >> "$PYFILEPY"
+        echo "    pass" >> "$PYFILEPY"
         chmod u+x "$PYFILE"
         vim "$PYFILE"
     else
