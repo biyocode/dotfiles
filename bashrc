@@ -21,7 +21,7 @@ function fsize() {
 
 # Creates python file with shebang and main, then sets ux permissions
 # createpy [FILENAME]
-function createpy() {
+function pycreate() {
     PYFILE="$1"
     if [[ $PYFILE == *".py"* ]]
     then
