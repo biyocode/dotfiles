@@ -1,4 +1,4 @@
-sudo pacman -S redis -noconfirm
+sudo pacman -S -noconfirm redis
 echo "w /sys/kernel/mm/transparent_hugepage/enabled - - - - never" | sudo tee -a /etc/tmpfiles.d/redis.conf
 echo "w /sys/kernel/mm/transparent_hugepage/defrag - - - - never" | sudo tee -a /etc/tmpfiles.d/redis.conf
 echo "net.core.somaxconn=512" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
