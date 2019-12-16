@@ -10,14 +10,35 @@ Args:
     user (str): argv[1]
     repo_name (str)
 """
-import settings
 import passpy
 import subprocess
 import os
+import json
 from sys import argv
+ABSPATH = os.path.dirname(os.path.realpath(__file__))
+FILENAME = ".gitremotetoken.json"
+FOLDER_KEY = "gitremotetoken"
 
+def get_folder_name():
+    """Generates json database if does not exist"""
+    data = None
+    if os.path.isfile(FILENAME):
+        with open(FILENAME, "r") as f:
+            data = json.load(f)
+    else:
+        folder = input("What is the name of your pass folder for your git 2FA token?\n")
+        if "/" in folder:
+            with open(FILENAME, "w") as f:
+                data = {FOLDER_KEY: folder}
+                json.dump(data, f)
+        else:
+            print("Try again and enter in the pass folder name for your git 2FA token.")
+            quit()
+    return data
 
 def create_origin(key=None, user=None, repo_name=None):
+    if ".git" in repo_name:
+        repo_name = repo_name.replace(".git", "")
     os.system("git remote add origin https://{}:{}@github.com/{}/{}.git".format(user, key, user, repo_name))
     del key
     pass
@@ -25,9 +46,12 @@ def create_origin(key=None, user=None, repo_name=None):
 if __name__ == "__main__":
     if len(argv) != 3:
         print("Needs 2 arguments: GITHUB_USER, GITHUB_REPO")
+        print("ex. https://github.com/user-name/repo-name.git")
+        print("gitremotetoken user-name repo-name")
     else:
         user = argv[1]
         repo_name = argv[2]
-        key = passpy.run_pass(settings.PASS_GITREMOTE)
+        # Get's pass folder name from json file, then runs pass with it
+        key = passpy.run_pass(get_folder_name()[FOLDER_KEY])
         create_origin(key, user, repo_name)
         del key

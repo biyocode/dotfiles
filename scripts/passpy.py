@@ -4,10 +4,8 @@ import subprocess
 
 def run_pass(pass_target=None):
     """run_pass
-
     Args:
         pass_target (str): The folder/application in your Password Store.
-
     Returns:
         result (str) or (list): Your password after decryption via passphrase.
     """
@@ -22,3 +20,6 @@ def run_pass(pass_target=None):
         return result[0]
     else:
         return result
+
+if __name__ == "__main__":
+    pass
