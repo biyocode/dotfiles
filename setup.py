@@ -9,7 +9,6 @@ HOME = os.path.expanduser("~")
 ABSPATH = os.path.dirname(os.path.realpath(__file__))
 PARTS_FOLDER = os.path.join(ABSPATH, "parts")
 SCRIPTS_FOLDER = os.path.join(ABSPATH, "scripts")
-CUSTOM_FOLDER = os.path.join(HOME, ".custom_scripts")
 BASHRC = os.path.join(HOME, ".bashrc")
 BASHRC_OLD = os.path.join(HOME, ".bashrc_backups", ".bashrc_old")
 BASHRC_NEW = os.path.join(HOME, ".bashrc_new")
@@ -22,8 +21,6 @@ ALLRUNSCRIPTS = {"vimplug": os.path.join(SCRIPTS_FOLDER, "vim_plug_setup")}
 
 
 def folder_setup():
-    if not os.path.exists(CUSTOM_FOLDER):
-        os.mkdir(CUSTOM_FOLDER)
     if not os.path.exists(os.path.join(HOME, ".bashrc_backups")):
         os.mkdir(os.path.join(HOME, ".bashrc_backups"))
 
@@ -52,7 +49,7 @@ def clear_bashrc(filename):
         with open(BASHRC_NEW, "w") as f1:
             for line in res:
                 f1.write(line)
-    print(f"> Removing {BASHRC}...")
+    print(f"> Removing old {BASHRC}...")
     os.system(f"rm {BASHRC}")
     os.system(f"mv {BASHRC_NEW} {BASHRC}")
 
@@ -68,10 +65,12 @@ def insert_scripts(name, data):
     temp_path = os.path.join(SCRIPTS_FOLDER, name)
     with open(temp_path, "w") as f:
         f.write(alias)
-    clear_bashrc(temp_path)
     print(f"> Checking if {name} alias exists...")
+    clear_bashrc(temp_path)
     os.system(f"rm {temp_path}")
-    os.system(f"echo '{alias}' >> {BASHRC}")
+    print(f"> Inserting into {BASHRC}...")
+    print(f">   -> {alias}")
+    os.system(f'echo "{alias}" >> {BASHRC}')
 
 def run_scripts(path):
     os.system("./{path}")
