@@ -8,9 +8,22 @@ A collection of the dotfiles and scripts I use.
 
 ## Setup :wrench:
 
-### Vim Plugins
+Run `setup.py` to insert specific parts of dotfiles or scripts.
 
-* Run `./scripts/vim_plug_setup` from root of folder.
+## Commands
+
+List of avaliable commands:
+
+Dotfiles:
+  * `qol_bashrc`
+  * `py_bashrc`
+  * `vim`
+
+Scripts:
+  * `gitremotetoken`
+
+Run Scripts:
+  * `vimplug`
 
 ---
 

@@ -1,11 +1,4 @@
-# ARCH STUFF
-# Checks recently installed packages
-alias recentinstalled='grep " installed " /var/log/pacman.log'
-# Checks package list
-alias packagelist='sudo pacman -Qi | egrep "^(Name|Installed)" | cut -f2 -d":" | tr "\nK" " \n" | sort -nrk 2 | less'
-# Checks system info in a UI
-alias dxdiag='hardinfo'
-
+# ~/.bashrc
 # Easy git commit
 # gcomm [THIS IS YOUR MESSAGE]
 gcomm() {
@@ -27,9 +20,9 @@ function pycreate() {
     then
         touch "$PYFILE"
         echo "#!/usr/bin/env python3" >> "$PYFILE"
-        echo "" >> "$PYFILEPY"
-        echo 'if __name__ == "__main__":' >> "$PYFILEPY"
-        echo "    pass" >> "$PYFILEPY"
+        echo "" >> "$PYFILE"
+        echo 'if __name__ == "__main__":' >> "$PYFILE"
+        echo "    pass" >> "$PYFILE"
         chmod u+x "$PYFILE"
         vim "$PYFILE"
     else
@@ -67,7 +60,9 @@ function prettyjson() {
     fi
 }
 
+# Git stuff
 alias gpush='git push origin'
+alias grm='git rm'
 alias mpush='git push origin master'
 alias gstat='git status .'
 alias gdiff='git diff'
@@ -75,21 +70,21 @@ alias gadd='git add'
 alias gpull='git pull origin'
 alias mpull='git pull origin master'
 
+# Python
+alias venv_a='source venv/bin/activate'
+alias venv_d='deactivate'
+
 # Custom alias
 alias lll='ls -la'
 alias ll='ls -l'
 alias v='vim'
-alias rbr='source ~/.bashrc'
+alias rbr='exec $SHELL'
 alias cls='printf "\033c"'
 alias hgcc='gcc -Wall -Werror -Wextra -pedantic'
 alias mynetip='curl "ifconfig.me";echo'
 alias ux='chmod u+x'
 alias ..='cd ..'
 alias biggestfile='ncdu ~'
-
-# Custom scripts
-alias gitremotetoken=''
-alias cleaner=''
 
 # Bash behavior
 #  -> Tab auto-complete

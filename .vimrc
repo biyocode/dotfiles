@@ -36,6 +36,7 @@ set tabstop=4       " sets tab to 4 spaces
 set shiftwidth=4    " sets number of spaces to tab
 
 autocmd FileType c setlocal tabstop=8
+autocmd FileType ruby setlocal tabstop=2
 
 """ Misc
 augroup python
