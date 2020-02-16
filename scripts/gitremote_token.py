@@ -15,25 +15,25 @@ import subprocess
 import os
 import json
 from sys import argv
+import sys
 ABSPATH = os.path.dirname(os.path.realpath(__file__))
-FILENAME = ".gitremotetoken.json"
+FILENAME = os.path.join(ABSPATH, ".gitremotetoken.json")
 FOLDER_KEY = "gitremotetoken"
 
+
 def get_folder_name():
-    """Generates json database if does not exist"""
     data = None
-    if os.path.isfile(FILENAME):
-        with open(FILENAME, "r") as f:
-            data = json.load(f)
-    else:
-        folder = input("What is the name of your pass folder for your git 2FA token?\n")
-        if "/" in folder:
-            with open(FILENAME, "w") as f:
-                data = {FOLDER_KEY: folder}
-                json.dump(data, f)
-        else:
+    if not os.path.isfile(FILENAME):
+        pf = input("What is the name of your pass folder for your git 2FA token?\n")
+        if "/" not in pf:
             print("Try again and enter in the pass folder name for your git 2FA token.")
             quit()
+        with open(FILENAME, "w") as f:
+            data = {FOLDER_KEY: pf}
+            json.dump(data, f)
+    else:
+        with open(FILENAME, "r") as f:
+            data = json.load(f)
     return data
 
 def create_origin(key=None, user=None, repo_name=None):
@@ -49,6 +49,7 @@ if __name__ == "__main__":
         print("ex. https://github.com/user-name/repo-name.git")
         print("gitremotetoken user-name repo-name")
     else:
+        print(sys.version)
         user = argv[1]
         repo_name = argv[2]
         # Get's pass folder name from json file, then runs pass with it

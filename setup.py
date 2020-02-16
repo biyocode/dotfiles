@@ -16,7 +16,7 @@ ALLPARTS = {"qol_bashrc": os.path.join(PARTS_FOLDER, "qol_bashrc"),
             "py_bashrc": os.path.join(PARTS_FOLDER, "py_bashrc"),}
 # Key needs to be dotfile name
 ALLDOTFILES = {".vimrc": os.path.join(ABSPATH, ".vimrc")}
-ALLSCRIPTS = {"gitremotetoken": {"p": os.path.join(SCRIPTS_FOLDER, "gitremote_token.py"), "f": "python"}}
+ALLSCRIPTS = {"gitremotetoken": {"p": os.path.join(SCRIPTS_FOLDER, "gitremote_token.py"), "f": "python3"}}
 ALLRUNSCRIPTS = {"vimplug": os.path.join(SCRIPTS_FOLDER, "vim_plug_setup")}
 
 
