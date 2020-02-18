@@ -36,8 +36,10 @@ height = 22
 radius = 0
 fixed-center = false
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+;background = ${colors.background}
+;foreground = ${colors.foreground}
+background = #5a000000
+foreground = #eee
 
 line-size = 3
 line-color = #f00
@@ -55,9 +57,9 @@ font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = i3
+modules-left = powermenu i3
 modules-center = mpd
-modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = alsa pulseaudio xkeyboard memory cpu wlan eth battery date
 
 tray-position = right
 tray-padding = 2
@@ -68,9 +70,6 @@ tray-padding = 2
 
 ;override-redirect = true
 enable-ipc = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
@@ -97,16 +96,6 @@ label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/i3]
 type = internal/i3
@@ -341,36 +330,18 @@ animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
-
 [module/powermenu]
 type = custom/menu
 
 expand-right = true
 
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-open =  
+label-open-font = 4
+label-open-foreground = #111111
+label-close-background = #000000
+label-close = cancel
+label-open-padding = 4 
+label-close-padding = 3
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
@@ -378,16 +349,20 @@ menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
 menu-0-1 = power off
 menu-0-1-exec = menu-open-2
+menu-0-0-padding = 3
+menu-0-1-padding = 3
 
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
 menu-1-1-exec = sudo reboot
+menu-1-0-padding = 3
 
 menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+menu-2-0-padding = 3
 
 [settings]
 screenchange-reload = true
