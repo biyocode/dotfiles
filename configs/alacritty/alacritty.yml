@@ -1,0 +1,37 @@
+window:
+  padding:
+    x: 8
+    y: 8
+  title: Alacritty
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+background_opacity: 0.55
+
+font:
+  size: 7.4
+  normal:
+    family: Fira Code
+    style: Regular
+
+  bold:
+    family: Fira Code
+    style: Bold
+
+  italic:
+    family: Fira Code
+    style: Italic
+
+  bold_italic:
+    family: Fira Code
+    style: Bold Italic
+  offset:
+    x: 0
+    y: 1
+
+scrolling:
+  history: 8000
+
+cursor:
+  style: Beam
