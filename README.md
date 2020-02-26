@@ -4,6 +4,14 @@
 
 A collection of the dotfiles and scripts I use.
 
+* Current setup:
+    - KDE
+    - i3 gaps
+    - compton
+    - polybar
+    - suckless-tabbed
+    - alacritty
+
 ---
 
 ## Setup :wrench:
