@@ -1,9 +1,14 @@
+set mouse-=a
+set nu
+""" Alacritty Mouse
+set ttymouse=sgr
+
 syntax on
 
-call plug#begin('~/.vim/plugged')
-Plug 'Yggdroot/indentLine'
-Plug 'terryma/vim-multiple-cursors'
-call plug#end()
+""call plug#begin('~/.vim/plugged')
+""Plug 'Yggdroot/indentLine'
+""Plug 'terryma/vim-multiple-cursors'
+""call plug#end()
 
 " Color scheme: desert, murphy, molokai, solarized
 set t_Co=256

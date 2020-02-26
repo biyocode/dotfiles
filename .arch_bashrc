@@ -1,6 +1,0 @@
-# Checks recently installed packages
-alias recentinstalled='grep " installed " /var/log/pacman.log'
-# Checks package list
-alias packagelist='sudo pacman -Qi | egrep "^(Name|Installed)" | cut -f2 -d":" | tr "\nK" " \n" | sort -nrk 2 | less'
-# Checks system info in a UI
-alias dxdiag='hardinfo'
