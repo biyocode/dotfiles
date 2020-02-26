@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+git clone https://git.suckless.org/tabbed
+cd tabbed
+sudo make install
