@@ -76,6 +76,9 @@ scrolling:
 cursor:
   style: Beam
 
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
 key_bindings:
   - { key: V,        mods: Control|Shift, action: Paste            }
   - { key: C,        mods: Control|Shift, action: Copy             }
