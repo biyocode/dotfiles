@@ -1,19 +1,14 @@
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
-
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
-
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
-
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 1
 default_floating_border normal
-
 # Hide borders
 hide_edge_borders none
-
 # change borders
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
@@ -26,9 +21,6 @@ font xft:URWGothic-Book 11
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec konsole
-
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -38,17 +30,20 @@ bindsym $mod+z exec --no-startup-id morc_menu
 #######################
 ### Custom Settings ###
 #######################
-exec_always feh --bg-scale ~/Pictures/wallpapers/cyberpunk.jpg
+# Terminal
+bindsym $mod+Return exec konsole
+exec --no-startup-id source ~/.fehbg
 exec --no-startup-id compton --config ~/.config/.compton.conf
 exec --no-startup-id ibus-daemon -drx
-#polybar, remove i3 bar
+exec --no-startup-id light-locker --lock-on-suspend --lock-after-screensaver=5 --lock-on-lid
+# Polybar, remove i3 bar
 exec --no-startup-id i3-msg bar mode toggle
 exec --no-startup-id polybar -r example
 # start program launcher
 #bindsym $mod+d exec --no-startup-id dmenu_recency
 bindsym $mod+d exec rofi -show drun -show-icons -display-drun ">" -theme ~/.config/rofi/config.rasi
 bindsym --release Print exec flameshot gui
-bindsym $mod+Print exec flameshot full
+bindsym $mod+Print exec flameshot full -c
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -66,13 +61,11 @@ exec --no-startup-id volumeicon
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
-
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -125,14 +118,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+Shift+s sticky toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
-
-# move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
+#bindsym $mod+a focus parent
 
 #navigate workspaces next / previous
 bindsym $mod+Ctrl+Right workspace next
@@ -161,30 +147,17 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 
-# Move focused container to workspace
-bindsym $mod+Ctrl+1 move container to workspace $ws1
-bindsym $mod+Ctrl+2 move container to workspace $ws2
-bindsym $mod+Ctrl+3 move container to workspace $ws3
-bindsym $mod+Ctrl+4 move container to workspace $ws4
-bindsym $mod+Ctrl+5 move container to workspace $ws5
-bindsym $mod+Ctrl+6 move container to workspace $ws6
-bindsym $mod+Ctrl+7 move container to workspace $ws7
-bindsym $mod+Ctrl+8 move container to workspace $ws8
-
 # Move to workspace with focused container
-bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+1 move container to workspace $ws1;
+bindsym $mod+Shift+2 move container to workspace $ws2;
+bindsym $mod+Shift+3 move container to workspace $ws3;
+bindsym $mod+Shift+4 move container to workspace $ws4;
+bindsym $mod+Shift+5 move container to workspace $ws5;
+bindsym $mod+Shift+6 move container to workspace $ws6;
+bindsym $mod+Shift+7 move container to workspace $ws7;
+bindsym $mod+Shift+8 move container to workspace $ws8;
 
 # Open applications on specific workspaces
-# assign [class="Thunderbird"] $ws1
-# assign [class="Pale moon"] $ws2
-# assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
 
 # Open specific applications in floating mode
@@ -268,14 +241,9 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# TODO
-# Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
-
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id nitrogen --restore; sleep 1; picom -b
-#exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
@@ -283,8 +251,7 @@ exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 #exec --no-startup-id start_conky_maia #this is the system stats/control help
-exec --no-startup-id xautolock -time 10 -locker blurlock
-exec_always --no-startup-id ff-theme-util
+exec --no-startup-id xautolock -time 20 -locker blurlock
 exec_always --no-startup-id fix_xcursor
 
 # Color palette used for the terminal ( ~/.Xresources file )
@@ -320,25 +287,21 @@ set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-    i3bar_command i3bar --transparency
-	#status_command i3status
+  i3bar_command i3bar --transparency
+	status_command i3status
 	position bottom
-
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #	tray_output primary
 #	tray_output eDP1
-
 	bindsym button4 nop
 	bindsym button5 nop
-#   font xft:URWGothic-Book 11
+# font xft:URWGothic-Book 11
 	strip_workspace_numbers yes
-
     colors {
         background #00000000
         statusline #F9FAF9
         separator  #454947
-
-#                      border  backgr. text
+#                           border  backgr. text
         focused_workspace  #F9FAF9 #16a085 #292F34
         active_workspace   #595B5B #353836 #FDF6E3
         inactive_workspace #595B5B #222D31 #EEE8D5
@@ -358,7 +321,6 @@ bindsym $mod+Shift+b bar mode invisible bar-1
   client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
-
   client.background       #2B2C2B
 
 #############################
@@ -369,10 +331,8 @@ bindsym $mod+Shift+b bar mode invisible bar-1
 # gaps inner|outer current|all set|plus|minus <px>
 # gaps inner all set 10
 # gaps outer all plus 5
-
 # Smart gaps (gaps used if only more than one container on the workspace)
 #smart_gaps on
-
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 for_window [class="^.*"] border pixel 0
@@ -380,8 +340,6 @@ new_window 1pixel
 smart_borders on
 smart_borders no_gaps
 border_radius 9
-
-# Set inner/outer gaps
 gaps inner 20
 gaps outer -2
 
@@ -401,11 +359,9 @@ mode "$mode_gaps_inner" {
         bindsym plus  gaps inner current plus 5
         bindsym minus gaps inner current minus 5
         bindsym 0     gaps inner current set 0
-
         bindsym Shift+plus  gaps inner all plus 5
         bindsym Shift+minus gaps inner all minus 5
         bindsym Shift+0     gaps inner all set 0
-
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -413,11 +369,9 @@ mode "$mode_gaps_outer" {
         bindsym plus  gaps outer current plus 5
         bindsym minus gaps outer current minus 5
         bindsym 0     gaps outer current set 0
-
         bindsym Shift+plus  gaps outer all plus 5
         bindsym Shift+minus gaps outer all minus 5
         bindsym Shift+0     gaps outer all set 0
-
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }

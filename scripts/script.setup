@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This setups and updates all scripts
+# It will fail if a script was removed
+source globals
+source functions
+if [ ! -d $SCRIPT_FOLDER ];
+then
+  mkdir "$SCRIPT_FOLDER"
+fi
+# Setup
+cp globals "$SCRIPT_FOLDER"
+cp functions "$SCRIPT_FOLDER"
+echo -e "${C}Updating all scripts:${NC}"
+cp login.aws "$SCRIPT_FOLDER"
+status_check
+echo ": login.aws"
+# Overwrite TODO

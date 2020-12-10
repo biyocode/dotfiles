@@ -156,6 +156,8 @@ alias mpush='git push origin master'
 alias mpull='git pull origin master'
 alias venva="source venv/bin/activate"
 alias venvd="deactivate"
+alias biggestf='ncdu ~'
+alias allpackages='C_ALL=C pacman -Qi | awk "/^Name/{name=$3} /^Installed Size/{print $4$5, name}" | sort -h'
 ### Custom Functions ###
 # File size
 function fsize() {
@@ -174,3 +176,52 @@ export QT\_IM\_MODULE=ibus
 # Tab auto-complete
 bind "TAB:menu-complete"
 bind "set show-all-if-ambiguous on"
+
+### PREHOOK ###
+if [[ "$PREHOOK_GADD_RUN" == "0" ]]; then
+    unset PREHOOK_GADD
+    unset PREHOOK_GADD_RUN
+    gaddcommand="$PREHOOK_GADD_COMMAND"
+    unset PREHOOK_GADD_COMMAND
+    eval $gaddcommand
+fi
+if [[ "$PREHOOK_GADD" == "1" ]]; then
+    unset PREHOOK_STATUS
+    unset PREHOOK_VENV
+    unset PREHOOK_GADD
+    unset PREHOOK_ENV
+    unset PREHOOK_GADD_COMMAND
+    eval `~/.prehook/prehookshell`
+fi
+if [[ "$PREHOOK_GADD" == "0" ]]; then
+    eval `~/.prehook/prehookshell`
+fi
+if [ "$(echo $PATH | grep -c '.prehook')" == "0" ]; then
+    export PATH="$HOME/.prehook/bin:$PATH"
+fi
+export PREHOOK_PATH="$(cat ~/.prehook/connections/prehook_path)"
+function PreCommand() {
+    if [ -z "$AT_PROMPT" ]; then
+        return
+    fi
+    unset AT_PROMPT
+    if [[ $BASH_COMMAND == *'git add'* ]] && [ -n "$PREHOOK_GADD_CNF" ]; then
+        unset PREHOOK_STATUS
+        unset PREHOOK_VENV
+        unset PREHOOK_GADD_CNF
+        export PREHOOK_GADD_COMMAND=$BASH_COMMAND
+        export PREHOOK_GADD=0
+        exec $SHELL
+    fi
+}
+trap "PreCommand" DEBUG
+FIRST_PROMPT=1
+function PostCommand() {
+    AT_PROMPT=1
+    if [ -n "$FIRST_PROMPT" ]; then
+        unset FIRST_PROMPT
+        return
+    fi
+    eval `~/.prehook/prehookshell`
+}
+PROMPT_COMMAND="PostCommand"

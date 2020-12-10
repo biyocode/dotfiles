@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
-# Colors
-C='\033[0;36m'
-R='\033[0;31m'
-G='\033[0;32m'
-NC='\033[0m'
-# Messages
-function status_check {
-  if [[ $? == 0 ]];then echo -en " > ${G}success${NC}";else echo -en " > ${R}fail${NC}";fi
-}
+source scripts/globals
+source scripts/functions
 # Manjaro Architect 0
 echo -e "${C}Updating all dotfiles on Manjaro Architect 0:${NC}"
 
@@ -38,6 +31,10 @@ echo ": i3 - config"
 cp ~/.config/rofi/config.rasi ./rofi/ 2> /dev/null
 status_check
 echo ": rofi - config.rasi"
+
+cp ~/.config/polybar/config ./polybar/ 2> /dev/null
+status_check
+echo ": polybar - config"
 
 cp ~/.bashrc ./bashrc/manjaro.bashrc 2>/dev/null
 status_check

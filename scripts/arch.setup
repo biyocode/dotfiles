@@ -1,21 +1,29 @@
 #!/usr/bin/env bash
-###########################
-### Additional Packages ###
-###########################
+############################
+## Arch Packages & Things ##
+############################
 
-###########################
-## THINGS TO DO MANUALLY ##
-###########################
+############################
+## THINGS TO DO MANUALLY ###
+############################
 ## Language
 # /etc/locale.gen > uncomment ja_JP.UTF-8 UTF-8
 # sudo locale-gen
 ## Time
 # If hardware time is not correct:
 # sudo ntpd -qg
+## Flameshot settings
+# `flameshot config`
+# General -> Save to path after copy
 
 ### Neccessities ###
+# SSD Maintenance
+sudo systemctl enable fstrim.timer
+sudo systemctl start fstrim.timer
+sudo pacman -S python-pip --noconfirm
 sudo pacman -S neofetch --noconfirm
 sudo pacman -S pulseaudio --noconfirm
+# TODO Unsure how to setup audio
 sudo pacman -S pulseaudio-alsa --noconfirm
 # https://wiki.archlinux.org/index.php/Feh
 # ADD i3 EXEC: feh --bg-scale /path/to/image.file
@@ -23,6 +31,7 @@ sudo pacman -S feh --noconfirm
 sudo pacman -S firefox --noconfirm
 sudo pacman -S pass --noconfirm
 sudo pacman -S ttf-fira-code --noconfirm
+sudo pacman -S noto-fonts-emoji --noconfirm --needed
 #japanese fonts
 #need to restart pc to see jp changes on some apps
 sudo pacman -S adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts otf-ipafont
@@ -46,6 +55,10 @@ sudo pacman -S gparted --noconfirm
 # i3 aesthetics
 sudo pacman -Rd --nodeps i3-gaps
 yay -S i3-gaps-rounded-git
+sudo pacman -S gtk-engine-murrine --noconfirm
+# https://github.com/NoiSek/Aether
+yay -S lightdm-webkit-theme-aether
+yay -S light-locker-settings
 
 ### Development ###
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
@@ -66,8 +79,9 @@ sudo pacman -S neovim --noconfirm
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 sudo pacman -S npm --noconfirm
+sudo pacman -S aws-cli --noconfirm
 
-### status bar ###
+### Status Bar ###
 #Get started with the example configuration:
 #  $ install -Dm644 /usr/share/doc/polybar/config $HOME/.config/polybar/config
 #  $ polybar example
