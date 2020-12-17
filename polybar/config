@@ -15,282 +15,140 @@
 ;   The README contains a lot of information
 ;
 ;==========================================================
-
+;CUSTOM
 [colors]
-background = #222
-background-alt = #444
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
-vol = #FF28E5
-network = #6E76FD
-battery = #FFFADE
-b_line_charge = #6EFDD1
-b_line_discharge = #6EE1FD
-b_line_full = #FD6EDA
-menu = #FF00E3
-i3_line = #2200FF
-clock = #62FFF1
+primary     = #e0020202
+secondary   = #ffffff
 
-[bar/example]
-monitor-fallback = eDP-1
-width = 100%
-height = 20:6
-;offset-x = 5%
-;offset-y = 5%
-radius = 2.2
-fixed-center = true
-;background = ${colors.background}
-;foreground = ${colors.foreground}
-background = #5a000000
-foreground = #eee
-line-size = 4
-line-color = #f00
+[const]
+padding = 1
+
+[bar/right]
+primary = ${colors.primary}
+border-color = ${colors.secondary}
 border-size = 0
-border-color = #00000000
-padding-left = 0
-padding-right = 4
-module-margin-left = 1
-module-margin-right = 2
-font-0 = fixed:pixelsize=9;1
-font-1 = "Noto Sans Mono:size=12;1"
-modules-left = powermenu i3
-modules-center = date
-modules-right = alsa xkeyboard memory cpu wlan eth battery
-tray-position = center
-tray-padding = 0
-;tray-background = #0063ff
-;wm-restack = i3
-;override-redirect = true
-enable-ipc = true
-
+border-transparent = true
+bottom = false
+font-0 = mononoki Nerd Font:weight=bold:fontformat=truetype:size=16:antialias=true;4
+font-1 = Noto Sans:fontformat=truetype:size=14:antialias=true;4
 cursor-click = pointer
 cursor-scroll = ns-resize
+fixed-center = true
+foregroud = ${colors.secondary}
+height = 28
+line-color = #f00
+line-size = 0
+module-margin-left = 0
+module-margin-right = 0
+offset-x = 90%:-30
+offset-y = 15
+padding-left = 0
+padding-right = 0
+width = 11%
+modules-center = alsa wlan battery
+modules-right = date
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-format-prefix =  
-format-prefix-foreground = ${colors.foreground-alt}
-;format-prefix-underline = ${colors.secondary}
-label-layout = %layout%
-;label-layout-underline = ${colors.secondary}
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-;label-indicator-underline = ${colors.secondary}
-
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
-; focused = Active workspace on focused monitor
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline = ${colors.i3_line}
-label-focused-padding = 2
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
-label-unfocused-padding = 2
-; visible = Active workspace on unfocused monitor
-label-visible = %index%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
-; urgent = Workspace with urgency hint set
-label-urgent = %index%
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-; Separator in between workspaces
-; label-separator = |
-
-[module/xbacklight]
-type = internal/xbacklight
-format = <label> <bar>
-label = BL
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
-
-[module/cpu]
-type = internal/cpu
-interval = 5
-format-prefix =
-format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = #f90000
-label = CPU: %percentage:2%%
-
-[module/memory]
-type = internal/memory
-interval = 5
-format-prefix =
-format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = #4bffdc
-label = RAM: %percentage_used%%
-
-[module/wlan]
-type = internal/network
-interface = wlp0s20f3
-interval = 3.0
-format-connected = <label-connected>
-label-connected-foreground = ${colors.network}
-label-connected = %essid%
-format-disconnected =
-
-[module/eth]
-type = internal/network
-interface = net0
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = 
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-[module/date]
-type = internal/date
-interval = 5
-time = %H:%M |
-time-alt = %H:%M:%S |
-date = %Y-%m-%d
-date-alt = " %Y-%m-%d"
-format-prefix =
-format-prefix-foreground = ${colors.foreground-alt}
-label = %time% %date%
-label-foreground = ${colors.clock}
-
-[module/alsa]
-type = internal/alsa
-master-soundcard = default
-speaker-soundcard = default
-headphone-soundcard = default
-format-volume = <bar-volume>
-label-muted = ﱝ muted
-format-muted-foreground = ${colors.foreground-alt}
-bar-volume-width = 7
-bar-volume-foreground-0 = ${colors.vol}
-bar-volume-foreground-1 = ${colors.vol}
-bar-volume-foreground-2 = ${colors.vol}
-bar-volume-foreground-3 = ${colors.vol}
-bar-volume-foreground-4 = ${colors.vol}
-bar-volume-foreground-5 = ${colors.vol}
-bar-volume-foreground-6 = ${colors.vol}
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+[bar/middle]
+inherit = bar/right
+offset-x = 40%
+offset-y = 15
+width = 20%
+primary = ${colors.primary}
+modules-left =
+modules-right =
+modules-center = i3
 
 [module/battery]
 type = internal/battery
-; LG Gram
-; Battery Values Checker: ls -1 /sys/class/power_supply
 battery = CMB0
 adapter = ADP1
 full-at = 98
+format-charging = <label-charging>
+format-charging-secondary = ${colors.secondary}
+format-discharging = <ramp-capacity><label-discharging>
+format-discharging-secondary = ${colors.secondary}
+format-full-secondary = ${colors.secondary}
+label-charging = 
+format-charging-padding = ${const.padding}
+label-discharging =
+format-discharging-padding = ${const.padding}
+label-full = 
+format-full-padding = ${const.padding}
+poll-interval = 5
+ramp-capacity-0                         = 
+ramp-capacity-1                         = 
+ramp-capacity-2                         = 
+ramp-capacity-3                         = 
+ramp-capacity-4                         = 
+ramp-capacity-5                         = 
+ramp-capacity-6                         = 
+ramp-capacity-7                         = 
+ramp-capacity-8                         = 
+ramp-capacity-9                         = 
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.b_line_charge}
+[module/pulseaudio]
+type = internal/pulseaudio
+format-muted = <label-muted>
+format-muted-secondary = ${colors.secondary}
+format-muted-primary-0 = #6C6AF2
+format-muted-primary-1 = #4648FB
+format-volume = <ramp-volume>
+format-volume-secondary = ${colors.secondary}
+format-volume-primary-0 = #6C6AF2
+format-volume-primary-1 = #4648FB
+interval = 5
+label-muted = %{A3:pavucontrol:}婢%{A}
+format-muted-padding = ${constants.padding}
+label-volume = %{A3:pavucontrol:}%{A}
+format-volume-padding             = ${const.padding}
+ramp-volume-0                     = %{A3:pavucontrol:}奄%{A}
+ramp-volume-1                     = %{A3:pavucontrol:}奔%{A}
+ramp-volume-2                     = %{A3:pavucontrol:}墳%{A}
+sink                              = alsa_output.pci-0000_00_1f.3.hdmi-stereo-extra1
+use-ui-max                        = false
 
-format-discharging = <label-discharging>
-format-discharging-underline = ${colors.b_line_discharge}
+[module/i3]
+type                        = internal/i3
+format                      = <label-state> <label-mode>
+index-sort                  = true
+pin-workspaces              = false
+wrapping-scroll             = false
+label-focused-font = 1
+label-unfocused-font = 1
+label-urgent-font = 1
+label-mode-font = 2
+label-mode                  = 煉 %mode%
+label-mode-background       = #ff0000
+label-mode-foreground       = ${colors.secondary}
+label-mode-padding          = 1
+label-focused               = 
+label-focused-background    = ${colors.primary}
+label-focused-foreground    = #77B9C4
+label-focused-padding       = 1
+label-unfocused             = 
+label-unfocused-background  = ${colors.primary}
+label-unfocused-foreground  = ${colors.secondary}
+label-unfocused-padding     = 1
+label-urgent                = 
+label-urgent-background     = ${colors.primary}
+label-urgent-foreground     = #ff0000
+label-urgent-padding        = 1
+label-visible               = 
+label-visible-foreground    = ${colors.secondary}
+label-visible-padding       = 1
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.b_line_full}
-format-full-underline = #FF0033
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.battery}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-foreground = ${colors.battery}
-animation-charging-framerate = 750
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-label-open = O
-label-open-font = 4
-label-open-foreground = ${colors.menu}
-label-close-background = #000000
-label-close = cancel
-label-open-padding = 4 
-label-open-padding-right = 1
-label-close-padding = 3
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = reboot
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-menu-0-0-padding = 3
-menu-0-1-padding = 3
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = reboot now
-menu-1-0-padding = 3
-
-menu-2-0 = power off
-menu-2-0-exec = shutdown now
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-menu-2-0-padding = 3
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
+[module/wlan]
+type                                  = internal/network
+format-connected                      = %{A1:tilix -e wicd-curses:}直<label-connected>%{A}
+format-connected-foreground           = ${colors.secondary}
+format-connected-background-0    = #6C6AF2
+format-connected-background-1    = #4648FB
+format-disconnected                   = %{A1:tilix -e wicd-curses:}睊%{A}
+format-disconnected-foreground        = ${colors.secondary}
+format-disconnected-background-0    = #6C6AF2
+format-disconnected-background-1    = #4648FB
+interface                             = wlp3s0
+interval                              = 3.0
+label-connected                       = 
+format-connected-padding              = ${const.padding}
+format-disconnected-padding           = ${const.padding}

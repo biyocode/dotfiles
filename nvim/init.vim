@@ -47,6 +47,13 @@ else
 endif
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
+"""language settings
+augroup python
+    autocmd!
+    autocmd FileType python
+                \   syn keyword pythonBuiltin self
+                \   syn keyword pythonBuiltin cls
+augroup end
 """spacing
 filetype plugin indent off
 set expandtab

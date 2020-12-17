@@ -38,7 +38,7 @@ exec --no-startup-id ibus-daemon -drx
 exec --no-startup-id light-locker --lock-on-suspend --lock-after-screensaver=5 --lock-on-lid
 # Polybar, remove i3 bar
 exec --no-startup-id i3-msg bar mode toggle
-exec --no-startup-id polybar -r example
+exec --no-startup-id polybar example --config=/home/harukai/.config/polybar/main
 # start program launcher
 #bindsym $mod+d exec --no-startup-id dmenu_recency
 bindsym $mod+d exec rofi -show drun -show-icons -display-drun ">" -theme ~/.config/rofi/config.rasi
@@ -243,16 +243,23 @@ mode "resize" {
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-#exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
+exec_always --no-startup-id fix_xcursor
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
+#exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+####################
+### STAT DISPLAY ###
+####################
 #exec --no-startup-id start_conky_maia #this is the system stats/control help
-exec --no-startup-id xautolock -time 20 -locker blurlock
-exec_always --no-startup-id fix_xcursor
+
+####################
+#### LOCKSCREEN ####
+####################
+#exec --no-startup-id xautolock -time 20 -locker blurlock
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -328,9 +335,6 @@ bindsym $mod+Shift+b bar mode invisible bar-1
 #############################
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
-# gaps inner|outer current|all set|plus|minus <px>
-# gaps inner all set 10
-# gaps outer all plus 5
 # Smart gaps (gaps used if only more than one container on the workspace)
 #smart_gaps on
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 

@@ -158,6 +158,7 @@ alias venva="source venv/bin/activate"
 alias venvd="deactivate"
 alias biggestf='ncdu ~'
 alias allpackages='C_ALL=C pacman -Qi | awk "/^Name/{name=$3} /^Installed Size/{print $4$5, name}" | sort -h'
+alias gitremotetoken='python ~/.harukai.scripts/gitremote_token.py'
 ### Custom Functions ###
 # File size
 function fsize() {
