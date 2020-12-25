@@ -11,7 +11,11 @@ fi
 cp globals "$SCRIPT_FOLDER"
 cp functions "$SCRIPT_FOLDER"
 echo -e "${C}Updating all scripts:${NC}"
+
 cp login.aws "$SCRIPT_FOLDER"
 status_check
 echo ": login.aws"
-# Overwrite TODO
+
+cp gitremote_token.py "$SCRIPT_FOLDER"
+status_check
+echo ": gitremote_token.py"
