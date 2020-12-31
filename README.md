@@ -1,12 +1,15 @@
 # Dotfiles
 
-## Current Machine: Manjaro Architect (i3)
- - WM: i3
+## Current Machine: Manjaro Architect
+ - WM: bspwm
  - DM: lightdm
  - Terminal: konsole
  - Editor: neovim
  - Shell: bash
-
+ - Status Bar: polybar
+ - Compositor: picom
+ - Menu: rofi
+ 
 ## Scripts (Linux)
 Run this to add and/or update all scripts into ~/.$HOME.scripts folder
 ```
