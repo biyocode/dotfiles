@@ -1,11 +1,11 @@
 * {
-  background-color: #e8e8e810;
-  border-color: #75A4CD20;
-  text-color: #FFF;
+  background-color: #46464620;
+  border-color: #75A4CD25;
+  text-color: #E9E9E9;
   spacing: 0;
   width: 712px;
   height: 360px;
-  border-radius:20px;
+  border-radius:15px;
 }
 
 inputbar {

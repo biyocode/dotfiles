@@ -1,6 +1,7 @@
 [Appearance]
 ColorScheme=DarkPastels
 Font=Fira Code Retina,12,-1,5,53,0,0,0,0,0,Regular
+TabColor=255,128,255
 
 [Cursor Options]
 CursorShape=1

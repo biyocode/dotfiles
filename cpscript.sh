@@ -16,6 +16,10 @@ cp ~/.config/.compton.conf ./compton/ 2> /dev/null
 status_check
 echo ": compton - .compton.conf"
 
+cp ~/.config/konsolerc ./konsole/ 2> /dev/null
+status_check
+echo ": konsole - konsolerc"
+
 cp ~/.local/share/konsole/Main.profile ./konsole/ 2> /dev/null
 status_check
 echo ": konsole - Main.profile"
@@ -40,6 +44,19 @@ cp ~/.bashrc ./bashrc/manjaro.bashrc 2>/dev/null
 status_check
 echo ": bashrc - .bashrc"
 
-cp ~/.profile ./manjaro/.profile 2>/dev/null
+cp ~/.config/sxhkd/sxhkdrc ./sxhkd/ 2>/dev/null
 status_check
-echo ": manjaro - .profile"
+echo ": sxhkd - sxhkdrc"
+
+cp ~/.config/bspwm/bspwmrc ./bspwm/ 2>/dev/null
+status_check
+echo ": bspwm - bspwmrc"
+
+cp ~/.config/picom.conf ./picom/ 2>/dev/null
+status_check
+echo ": picom - picom.conf"
+
+rm ./themes/phocus/gtk-3.0/gtk.css
+sudo cat /usr/share/themes/phocus/gtk-3.0/gtk.css >> ./themes/phocus/gtk-3.0/gtk.css 2>/dev/null
+status_check
+echo ": themes - phocus"

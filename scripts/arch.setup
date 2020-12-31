@@ -34,10 +34,13 @@ sudo pacman -S ttf-fira-code --noconfirm
 sudo pacman -S noto-fonts-emoji --noconfirm --needed
 #japanese fonts
 #need to restart pc to see jp changes on some apps
-sudo pacman -S adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts otf-ipafont
+sudo pacman -S adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts otf-ipafont --noconfirm
 # configs are in ~/.compton.conf
 # ADD i3 EXEC: compton --config ~/.config/.compton.conf
-yay -S compton-tryone-git
+# moved to picom + bspwm
+#yay -S compton-tryone-git
+# picom kawase
+yay -S picom-ibhagwan-git
 #dmenu replacement
 sudo pacman -S rofi --noconfirm
 mkdir -p ~/.config/rofi
@@ -47,18 +50,22 @@ touch ~/.config/rofi/config.rasi
 # remove from i3 config, mod+space
 sudo pacman -S ibus-anthy --noconfirm
 # file manager
-sudo pacman -S thunar --noconfirm
+yay -S exo-devel
+# pick both devel for ui and utils
+yay -S thunar-git
 # screenshoter
 sudo pacman -S flameshot --noconfirm
 # GUI partitioning tool
 sudo pacman -S gparted --noconfirm
-# i3 aesthetics
-sudo pacman -Rd --nodeps i3-gaps
-yay -S i3-gaps-rounded-git
-sudo pacman -S gtk-engine-murrine --noconfirm
+# i3 aesthetics (moved to bspwm)
+#sudo pacman -Rd --nodeps i3-gaps
+#yay -S i3-gaps-rounded-git
+#sudo pacman -S gtk-engine-murrine --noconfirm
 # https://github.com/NoiSek/Aether
 yay -S lightdm-webkit-theme-aether
 yay -S light-locker-settings
+# this should enable the lockscreen, restart if it doesn't change
+sudo systemctl enable lightdm.service
 
 ### Development ###
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
@@ -70,10 +77,11 @@ sudo pacman -S docker-compose --noconfirm
 sudo groupadd docker
 sudo usermod -aG docker ${USER}
 sudo pacman -S mariadb --noconfirm
+sudo pacman -S postgresql --noconfirm
 sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 # set i3 config to exec konsole
 # konsole configs in ~/.local/share/konsole
-# Self css -> ctrl+shift+, (settings) -> tab bar -> bottom
+# Self css -> ctrl+shift+m, (settings) -> tab bar -> bottom
 sudo pacman -S konsole --noconfirm
 sudo pacman -S neovim --noconfirm
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -87,7 +95,17 @@ sudo pacman -S aws-cli --noconfirm
 #  $ polybar example
 #  For more information, see https://github.com/jaagr/polybar/wiki
 sudo pacman -S polybar --noconfirm
+# polybar fonts
+yay -S nerd-fonts-droid-sans-mono
+yay -S otf-font-awesome-5-free
 
 ### Social ###
 sudo pacman -S discord --noconfirm
-yay -S slack-discord
+yay -S slack-desktop
+
+### Themes ###
+# phocus theme deps
+sudo pacman -S sassc --noconfirm
+mkdir ~/temp
+git clone https://github.com/JavaCafe01/phocus.git ~/temp/
+# make & sudo make install in temp/phocus

@@ -1,13 +1,13 @@
 QTabBar,
 QTabBar::tab
 {
-    font-family: "Monospace";
-    font-size: 11px;
+    font-family: "Droid Sans Mono";
+    font-size: 10px;
     height: 16px;
-    padding: 1px;
+    padding: 0px;
     border: 0px;
-    background-color: #323231;
-    color: #F7F0D4;
+    background-color: rgb(25, 25, 25);
+    color: #fff;
 }
 
 QTabBar::tab:hover
@@ -17,9 +17,8 @@ QTabBar::tab:hover
 
 QTabBar::tab:selected
 {
-    font-weight: bold;
-    color: #DEB1E7;
+    color: #73FFD1;
     padding: 0px;
     border: 0px;
-    background-color: #323231;
+    background-color: rgb(25, 25, 25);
 }
