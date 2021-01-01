@@ -53,6 +53,8 @@ sudo pacman -S ibus-anthy --noconfirm
 yay -S exo-devel
 # pick both devel for ui and utils
 yay -S thunar-git
+# thunar thumbnails to show, check in config to always show too (requires restart)
+sudo pacman -S tumbler --noconfirm
 # screenshoter
 sudo pacman -S flameshot --noconfirm
 # GUI partitioning tool
@@ -107,5 +109,6 @@ yay -S slack-desktop
 # phocus theme deps
 sudo pacman -S sassc --noconfirm
 mkdir ~/temp
+# thunar transparency thing
 git clone https://github.com/JavaCafe01/phocus.git ~/temp/
 # make & sudo make install in temp/phocus

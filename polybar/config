@@ -25,13 +25,13 @@ tray-padding = 2
 offset-y = 7
 wm-restack = bspwm
 ; bar color
-;border-color = #0D00564d
+border-color = #fff
 background = ${colors.background}
 foreground = ${colors.foreground}
 ; used fonts
 font-0 = Droid Sans Mono:style=Regular:pixelsize=11;2
 font-1 = Font Awesome 5 Brands Regular:style=Regular:pixelsize=12;2
-font-2 = siji:style=Regular:pixelsize=24;2
+font-2 = Droid Sans Mono:style=Regular:pixelsize=11;2
 font-3 = Font Awesome 5 Free:pixelsize=12;2
 font-4 = Font Awesome 5 Free Solid:pixelsize=12;2
 font-5 = Font Awesome 5 Brands:pixelsize=12;2
@@ -91,6 +91,7 @@ interval = 1
 date = %Y-%m-%d%
 time = %H:%M
 label = %time% | %date%
+label-foreground = #fff
 label-padding-left = 5
 label-padding-right = 2
 
@@ -164,6 +165,7 @@ format-connected-prefix = %{A1:networkmanager_dmenu:}%{A}
 format-connected-prefix-foreground = #B0E4E9
 format-connected = <label-connected>
 label-connected = %essid%
+label-connected-font = 2
 label-connected-padding-left = 2
 label-connected-padding-right = 2
 format-connected-prefix-padding-left = 2

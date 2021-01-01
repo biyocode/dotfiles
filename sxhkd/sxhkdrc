@@ -170,7 +170,7 @@ super + ctrl + r
 ### Utility Keybinds ###
 ########################
 super + d
-    rofi -show drun -show-icons -display-drun ">" -theme ~/.config/rofi/config.rasi
+    rofi -show drun -show-icons -display-drun "" -theme ~/.config/rofi/config.rasi
 
 super + e
 	thunar

@@ -1,11 +1,16 @@
 * {
   background-color: #46464620;
-  border-color: #75A4CD25;
   text-color: #E9E9E9;
+  font: "Droid sans mono 11";
   spacing: 0;
   width: 712px;
   height: 360px;
-  border-radius:15px;
+  border-radius: 10px;
+}
+
+window {
+  border: 1px;
+  border-color: #fff;
 }
 
 inputbar {
@@ -16,9 +21,11 @@ inputbar {
 }
 
 prompt {
-  padding: 16px;
+  padding: 16px 16px 16px 16px;
   border-radius:0px;
   border: 0 1px 0 0;
+  border-color: #999;
+  text-color: #74EDE2;
 }
 
 textbox {
@@ -32,6 +39,8 @@ textbox {
 entry {
   padding: 16px;
   border-radius:0px;
+  border: 0;
+  text-color: #74EDE2;
 }
 
 listview {
@@ -39,10 +48,11 @@ listview {
   margin: 0 0 -1px 0;
   scrollbar: false;
   border-radius:0px;
+  border: 0;
 }
 
 element {
-  border: 0 0 0px 0;
+  border: 0;
   padding: 20px;
   border-radius:0px;
 }
@@ -50,4 +60,5 @@ element {
 element selected {
   background-color: #e8e8e820;
   border-radius:0px;
+  border: 0;
 }

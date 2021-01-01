@@ -1,5 +1,5 @@
 """plugins
-" PlugInstall, PlugUpdate, PlugClean
+" Common Commands - PlugInstall, PlugUpdate, PlugClean
 call plug#begin("~/.config/nvim/plugged")
   Plug 'ghifarit53/tokyonight-vim'
   Plug 'Yggdroot/indentLine'
@@ -13,7 +13,6 @@ set t_Co=256
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
 colorscheme tokyonight
-" this forces transparent bg
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 """mouse
 set mouse-=a
