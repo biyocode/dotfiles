@@ -14,8 +14,8 @@ ToolBarsMovable=Disabled
 eDP1 Height 1080=1002
 eDP1 Width 1920=950
 eDP1 Window-Maximized 1080x1920=true
-eDP1 XPosition=0
-eDP1 YPosition=40
+eDP1 XPosition=801
+eDP1 YPosition=31
 
 [TabBar]
 TabBarUseUserStyleSheet=true

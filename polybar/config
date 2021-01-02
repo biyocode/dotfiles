@@ -85,12 +85,13 @@ label-empty =
 label-empty-foreground = ffffff
 label-empty-padding = 2
 
+;clicking requires polybarcal.sh in your /bin
 [module/date]
 type = internal/date
 interval = 1
 date = %Y-%m-%d%
 time = %H:%M
-label = %time% | %date%
+label = %{A1:bspc rule -a '*' -o state=floating rectangle=250x250+800+30 && konsole -e polybarcal.sh:}%time% | %date%%{A}
 label-foreground = #fff
 label-padding-left = 5
 label-padding-right = 2
