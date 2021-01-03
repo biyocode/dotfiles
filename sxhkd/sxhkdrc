@@ -176,7 +176,7 @@ super + e
 	thunar
 
 super + Return
-    konsole --profile Main
+    konsole
 
 Print
   flameshot gui

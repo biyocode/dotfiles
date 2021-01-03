@@ -86,4 +86,5 @@ fi
 ############
 # japanese keyboard
 ibus-daemon -drx
-polybar -r topbar &
+killall -q polybar
+polybar topbar &

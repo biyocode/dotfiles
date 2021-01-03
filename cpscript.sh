@@ -55,8 +55,3 @@ echo ": bspwm - bspwmrc"
 cp ~/.config/picom.conf ./picom/ 2>/dev/null
 status_check
 echo ": picom - picom.conf"
-
-rm ./themes/phocus/gtk-3.0/gtk.css
-sudo cat /usr/share/themes/phocus/gtk-3.0/gtk.css >> ./themes/phocus/gtk-3.0/gtk.css 2>/dev/null
-status_check
-echo ": themes - phocus"

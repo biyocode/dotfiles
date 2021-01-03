@@ -137,28 +137,22 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
-
-# background
-sh ~/.fehbg
-### Custom Alias ###
+# Custom Alias
+alias v="nvim"
 alias ..="cd .."
 alias ll="ls -l"
 alias lll="ls -la"
-alias v="nvim"
-alias ux='chmod u+x'
 alias passc="pass -c"
-alias gstat='git status .'
-alias gdiff='git diff'
-alias gadd='git add'
-alias gpush='git push origin'
-alias gpull='git pull origin'
-alias mpush='git push origin master'
-alias mpull='git pull origin master'
 alias venva="source venv/bin/activate"
 alias venvd="deactivate"
-alias biggestf='ncdu ~'
-alias allpackages='C_ALL=C pacman -Qi | awk "/^Name/{name=$3} /^Installed Size/{print $4$5, name}" | sort -h'
-alias gitremotetoken='python ~/.harukai.scripts/gitremote_token.py'
+alias gstat="git status"
+alias gdiff="git diff"
+alias gadd="git add"
+alias mpush="git push origin master"
+### Keyboard ###
+export GTK\_IM\_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT\_IM\_MODULE=ibus
 ### Custom Functions ###
 # File size
 function fsize() {
@@ -169,60 +163,13 @@ function gcomm() {
     GITMESSAGE="$*"
     git commit -m "$GITMESSAGE"
 }
-### Keyboard ###
-export GTK\_IM\_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT\_IM\_MODULE=ibus
-### Misc ###
-# Tab auto-complete
+### Behavior ###
 bind "TAB:menu-complete"
 bind "set show-all-if-ambiguous on"
-
-### PREHOOK ###
-if [[ "$PREHOOK_GADD_RUN" == "0" ]]; then
-    unset PREHOOK_GADD
-    unset PREHOOK_GADD_RUN
-    gaddcommand="$PREHOOK_GADD_COMMAND"
-    unset PREHOOK_GADD_COMMAND
-    eval $gaddcommand
+if [ "$(echo $PATH | grep -c '.pyenv')" == "0" ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
 fi
-if [[ "$PREHOOK_GADD" == "1" ]]; then
-    unset PREHOOK_STATUS
-    unset PREHOOK_VENV
-    unset PREHOOK_GADD
-    unset PREHOOK_ENV
-    unset PREHOOK_GADD_COMMAND
-    eval `~/.prehook/prehookshell`
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
 fi
-if [[ "$PREHOOK_GADD" == "0" ]]; then
-    eval `~/.prehook/prehookshell`
-fi
-if [ "$(echo $PATH | grep -c '.prehook')" == "0" ]; then
-    export PATH="$HOME/.prehook/bin:$PATH"
-fi
-export PREHOOK_PATH="$(cat ~/.prehook/connections/prehook_path)"
-function PreCommand() {
-    if [ -z "$AT_PROMPT" ]; then
-        return
-    fi
-    unset AT_PROMPT
-    if [[ $BASH_COMMAND == *'git add'* ]] && [ -n "$PREHOOK_GADD_CNF" ]; then
-        unset PREHOOK_STATUS
-        unset PREHOOK_VENV
-        unset PREHOOK_GADD_CNF
-        export PREHOOK_GADD_COMMAND=$BASH_COMMAND
-        export PREHOOK_GADD=0
-        exec $SHELL
-    fi
-}
-trap "PreCommand" DEBUG
-FIRST_PROMPT=1
-function PostCommand() {
-    AT_PROMPT=1
-    if [ -n "$FIRST_PROMPT" ]; then
-        unset FIRST_PROMPT
-        return
-    fi
-    eval `~/.prehook/prehookshell`
-}
-PROMPT_COMMAND="PostCommand"

@@ -38,7 +38,7 @@ font-5 = Font Awesome 5 Brands:pixelsize=12;2
 ; module positions
 modules-center = date bspwm
 modules-left = xwindow
-modules-right = cpu memory alsa xkeyboard wlan eth battery
+modules-right = cpu memory pulseaudio xkeyboard wlan eth battery
 ; scrolling action on the topbar
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
@@ -91,16 +91,18 @@ type = internal/date
 interval = 1
 date = %Y-%m-%d%
 time = %H:%M
-label = %{A1:bspc rule -a '*' -o state=floating rectangle=250x250+800+30 && konsole -e polybarcal.sh:}%time% | %date%%{A}
+label = %{A1:bspc rule -a '*' -o state=floating rectangle=250x250+800+35 && konsole -e polybarcal.sh:}%time% | %date%%{A}
 label-foreground = #fff
 label-padding-left = 5
 label-padding-right = 2
 
-[module/alsa]
-type = internal/alsa
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+use-ui-max = true
+interval = 5
 format-volume = <bar-volume>
 format-volume-margin = 2.5
-; set alsa bar properties
 bar-volume-width = 4
 bar-volume-foreground-0 = #BAFFC9
 bar-volume-gradient = false
@@ -112,6 +114,7 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 label-muted = 
 label-muted-foreground = #FFA0AB
+click-middle = bspc rule -a '*' -o state=floating && pavucontrol
 
 [module/battery]
 type = internal/battery
