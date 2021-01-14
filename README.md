@@ -3,7 +3,7 @@
 ## Current Machine: Manjaro Architect
  - WM: bspwm
  - DM: lightdm
- - Terminal: konsole
+ - Terminal: kitty
  - Editor: neovim
  - Shell: bash
  - Status Bar: polybar

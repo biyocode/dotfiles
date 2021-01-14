@@ -28,6 +28,10 @@ cp ~/.local/share/konsole/konsole.css ./konsole/ 2> /dev/null
 status_check
 echo ": konsole - konsole.css"
 
+cp ~/.config/kitty/kitty.conf ./kitty/ 2> /dev/null
+status_check
+echo ": kitty - kitty.conf"
+
 cp ~/.i3/config ./i3/ 2> /dev/null
 status_check
 echo ": i3 - config"
@@ -55,3 +59,7 @@ echo ": bspwm - bspwmrc"
 cp ~/.config/picom.conf ./picom/ 2>/dev/null
 status_check
 echo ": picom - picom.conf"
+
+cp ~/.config/starship.toml ./starship/ 2>/dev/null
+status_check
+echo ": starship - starship.toml"

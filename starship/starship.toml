@@ -1,0 +1,31 @@
+add_newline = false
+
+[character]
+error_symbol = "[X](bold red) "
+# Prompt format
+format = """
+[┌──────────────────────────────────────────────](bold fg:#CC99CC)
+[│](bold fg:#CC99CC)$directory$rust$package
+[└─>](bold fg:#CC99CC) """
+
+[username]
+style_user = "bold fg:#CC99CC"
+style_root = "white bold"
+format = " [$user@]($style)"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format =  "[$hostname](bold fg:#CC99CC): "
+disabled = false
+
+[directory]
+read_only = "🔒"
+read_only_style= "bold white"
+
+[docker_context]
+format = "via [🐋 $context](blue bold)"
+
+[cmd_duration]
+disabled = true
