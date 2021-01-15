@@ -1,8 +1,8 @@
 add_newline = false
 
 [character]
-error_symbol = "[X](bold red) "
 # Prompt format
+vicmd_symbol = "[V](bold green) "
 format = """
 [┌──────────────────────────────────────────────](bold fg:#CC99CC)
 [│](bold fg:#CC99CC)$directory$rust$package
@@ -29,3 +29,11 @@ format = "via [🐋 $context](blue bold)"
 
 [cmd_duration]
 disabled = true
+
+[aws]
+format = "on [$symbol$profile]($style) "
+style = "bold cyan"
+symbol = "🅰 "
+
+[aws.region_aliases]
+us-east-1 = "est-1"

@@ -15,7 +15,9 @@ let g:tokyonight_enable_italic = 1
 colorscheme tokyonight
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 """mouse
-set mouse-=a
+" these settings let you copy to clipboard from vim, use y to copy selection
+set mouse=nvi
+set clipboard=unnamedplus
 """standard
 syntax on
 set encoding=utf-8
@@ -113,3 +115,5 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 " delimitMate to turn off autocomplete on specific words:
 " au FileType mail let b:delimitMate_autoclose = 0 : this turns off for 'mail'
+""" Custom
+au BufNewFile *.html 0r ~/.config/nvim/html.skel | let IndentStyle = "html"

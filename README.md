@@ -6,6 +6,7 @@
  - Terminal: kitty
  - Editor: neovim
  - Shell: bash
+   - Prompt: Starship
  - Status Bar: polybar
  - Compositor: picom
  - Menu: rofi
