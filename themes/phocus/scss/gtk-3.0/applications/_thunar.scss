@@ -1,0 +1,57 @@
+window.thunar {
+  background: none;
+
+  treeview {
+    background: none;
+  }
+
+  grid {
+    *:selected,
+    *:active {
+      background: $background-3;
+      border-radius: 3px;
+    }
+  }
+
+  .sidebar {
+    background-color: #30333d;
+    /*box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 1);*/
+    padding: 1rem;
+  }
+
+  treeview {
+    padding: 3px;
+    &:selected {
+      background: $primary-accent;
+    }
+  }
+
+  .frame {
+    border: 0px;
+  }
+
+  toolbar {
+    box {
+      padding: 5px;
+    }
+  }
+
+  paned grid {
+    background: $background-1;
+  }
+
+  toolbar {
+    background: $background-2;
+    padding: 5px 0;
+  }
+  toolbar * {
+    background: none;
+  }
+
+  /* hide separator */
+  separator {
+    background-image: image($background-3);
+    background-size: 1px 1px;
+    background-position: center center;
+  }
+}

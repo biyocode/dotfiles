@@ -82,7 +82,7 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 """ Plugin Settings
 "" cock - CocUninstall, CocConfig
 " python https://github.com/neoclide/coc-python
-let g:coc_global_extensions = ['coc-python', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-python', 'coc-emmet', 'coc-css', 'coc-html']
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "GoTo code navigation

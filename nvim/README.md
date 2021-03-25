@@ -1,6 +1,6 @@
 # nvim
 
-## Manjaro Architect 0
+## Arch 0
 
 Locations:
  - `~/.config/nvim/init.vim`

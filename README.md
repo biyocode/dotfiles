@@ -1,6 +1,6 @@
 # Dotfiles
 
-## Current Machine: Manjaro Architect
+## Current Machine: Arch
  - WM: bspwm
  - DM: lightdm
  - Terminal: kitty
@@ -11,9 +11,3 @@
  - Compositor: picom
  - Menu: rofi
  - File Explorer: thunar-git
- 
-## Scripts (Linux)
-Run this to add and/or update all scripts into ~/.$HOME.scripts folder
-```
-./script.setup
-```

@@ -22,36 +22,33 @@ sudo systemctl enable fstrim.timer
 sudo systemctl start fstrim.timer
 sudo pacman -S python-pip --noconfirm
 sudo pacman -S neofetch --noconfirm
-sudo pacman -S pulseaudio --noconfirm
-# TODO Unsure how to setup audio
-sudo pacman -S pulseaudio-alsa --noconfirm
+# audio
+sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pulseaudio-bluetooth --noconfirm
+# software for newer audio cards
+sudo pacman -S sof-firmware alsa-ucm-conf --noconfirm
+# bluetooth
+sudo pacman -S bluez bluez-utils blueman --noconfirm
+sudo systemctl enable bluetooth
 # https://wiki.archlinux.org/index.php/Feh
 # ADD i3 EXEC: feh --bg-scale /path/to/image.file
 sudo pacman -S feh --noconfirm
-sudo pacman -S firefox --noconfirm
 sudo pacman -S pass --noconfirm
 sudo pacman -S ttf-fira-code --noconfirm
 sudo pacman -S noto-fonts-emoji --noconfirm --needed
 #japanese fonts
 #need to restart pc to see jp changes on some apps
 sudo pacman -S adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts otf-ipafont --noconfirm
-# configs are in ~/.compton.conf
-# ADD i3 EXEC: compton --config ~/.config/.compton.conf
-# moved to picom + bspwm
-#yay -S compton-tryone-git
 # picom kawase
 yay -S picom-ibhagwan-git
 #dmenu replacement
 sudo pacman -S rofi --noconfirm
-mkdir -p ~/.config/rofi
-touch ~/.config/rofi/config.rasi
 # ADD i3 EXEC: ibus-daemon -drx
 # preference->key to super+meta+space
 # remove from i3 config, mod+space
 sudo pacman -S ibus-anthy --noconfirm
 # file manager
-yay -S exo-devel
 # pick both devel for ui and utils
+yay -S exo-devel
 yay -S thunar-git
 # thunar thumbnails to show, check in config to always show too (requires restart)
 sudo pacman -S tumbler --noconfirm
@@ -59,32 +56,28 @@ sudo pacman -S tumbler --noconfirm
 sudo pacman -S flameshot --noconfirm
 # GUI partitioning tool
 sudo pacman -S gparted --noconfirm
-# i3 aesthetics (moved to bspwm)
-#sudo pacman -Rd --nodeps i3-gaps
-#yay -S i3-gaps-rounded-git
-#sudo pacman -S gtk-engine-murrine --noconfirm
+
+#https://wiki.archlinux.org/index.php/Power_management#Sleep_hooks
 # https://github.com/NoiSek/Aether
 yay -S lightdm-webkit-theme-aether
-yay -S light-locker-settings
+yay -S light-locker
 # this should enable the lockscreen, restart if it doesn't change
-sudo systemctl enable lightdm.service
+sudo systemctl enable lightdm
+# profile pic
+sudo pacman -S accountsservice
 
 ### Development ###
+# check bashrc to enable pyenv command
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile
-echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile
-echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile
-sudo pacman -S docker --noconfirm
-sudo pacman -S docker-compose --noconfirm
+sudo pacman -S docker docker-compose --noconfirm
 sudo groupadd docker
 sudo usermod -aG docker ${USER}
-sudo pacman -S mariadb --noconfirm
-sudo pacman -S postgresql --noconfirm
+sudo pacman -S mariadb postgresql --noconfirm
 sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 # set i3 config to exec konsole
 # konsole configs in ~/.local/share/konsole
 # Self css -> ctrl+shift+m, (settings) -> tab bar -> bottom
-sudo pacman -S konsole --noconfirm
+sudo pacman -S kitty --noconfirm
 sudo pacman -S neovim --noconfirm
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -99,10 +92,9 @@ echo 'eval "$(starship init bash)"' >> ~/.bashrc
 #  $ install -Dm644 /usr/share/doc/polybar/config $HOME/.config/polybar/config
 #  $ polybar example
 #  For more information, see https://github.com/jaagr/polybar/wiki
-sudo pacman -S polybar --noconfirm
-# polybar fonts
-yay -S nerd-fonts-droid-sans-mono
-yay -S otf-font-awesome-5-free
+# https://github.com/blobject/agave
+yay -S polybar otf-font-awesome-5-free --noconfirm
+#yay -S nerd-fonts-droid-sans-mono
 
 ### Social ###
 sudo pacman -S discord --noconfirm
