@@ -18,8 +18,8 @@ fixed-center = true
 border-size = 0
 padding-left = 0
 padding-right = 4
-module-margin-left = 2
-module-margin-right = 2
+module-margin-left = 1
+module-margin-right = 1
 tray-position = none
 tray-padding = 2
 offset-y = 7
@@ -72,7 +72,6 @@ label-focused-foreground = #E7BBFF
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 1
-
 ; set label properties
 ;label-occupied =  
 label-occupied = 
@@ -87,9 +86,9 @@ label-empty-padding = 1
 
 [module/bluetooth]
 type = custom/text
-content = 
+content = "  "
 format = <label>
-format-foreground = #fff
+format-foreground = ${colors.secondary}
 click-left = bspc rule -a '*' -o state=floating rectangle=400x120+800+35 && kitty -e sudo polybarblue.sh
 click-middle = blueman-manager
 
@@ -156,7 +155,7 @@ animation-charging-framerate = 750
 type = internal/memory
 interval = 5
 label = %percentage_used%%
-label-padding-right = 1
+label-padding-right = 0
 label-padding-left = 2
 format-prefix = 
 format-prefix-foreground = #B1BDFF
