@@ -38,7 +38,7 @@ font-5 = Font Awesome 5 Brands:pixelsize=12;2
 ; module positions
 modules-center = date bspwm
 modules-left = xwindow
-modules-right = cpu memory pulseaudio xkeyboard wlan eth battery
+modules-right = cpu memory pulseaudio bluetooth xkeyboard wlan eth battery
 ; scrolling action on the topbar
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
@@ -84,6 +84,14 @@ label-urgent-padding = 1
 label-empty = 
 label-empty-foreground = ffffff
 label-empty-padding = 1
+
+[module/bluetooth]
+type = custom/text
+content = 
+format = <label>
+format-foreground = #fff
+click-left = bspc rule -a '*' -o state=floating rectangle=400x120+800+35 && kitty -e sudo polybarblue.sh
+click-middle = blueman-manager
 
 ;clicking requires polybarcal.sh in your /bin
 [module/date]

@@ -107,3 +107,6 @@ mkdir ~/temp
 # thunar transparency thing
 git clone https://github.com/JavaCafe01/phocus.git ~/temp/
 # make & sudo make install in temp/phocus
+# git config --global user.email "email"
+# git config --global user.name "github user"
+# git config --global credential.helper store
