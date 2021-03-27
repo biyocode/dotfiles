@@ -110,3 +110,14 @@ git clone https://github.com/JavaCafe01/phocus.git ~/temp/
 # git config --global user.email "email"
 # git config --global user.name "github user"
 # git config --global credential.helper store
+
+#settings in /etc/acpi/handler.sh
+#use acpi_listen to get fn key event names to add to handler if else conditionals
+sudo pacman -S acpid
+sudo systemctl enable acpid
+sudo systemctl start acpid
+
+sudo pacman -S bash-completion
+
+#extras
+sudo pacman -S bat

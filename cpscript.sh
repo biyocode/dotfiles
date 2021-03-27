@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# update only necessary changes
 source scripts/globals
 source scripts/functions
 echo -e "${C}Updating all dotfiles on Arch 0:${NC}"
@@ -19,10 +20,6 @@ cp ~/.config/polybar/config ./polybar/ 2> /dev/null
 status_check
 echo ": polybar - config"
 
-cp ~/.bashrc ./bashrc/bashrc 2>/dev/null
-status_check
-echo ": bashrc - .bashrc"
-
 cp ~/.config/sxhkd/sxhkdrc ./sxhkd/ 2>/dev/null
 status_check
 echo ": sxhkd - sxhkdrc"
@@ -38,3 +35,7 @@ echo ": picom - picom.conf"
 cp ~/.config/starship.toml ./starship/ 2>/dev/null
 status_check
 echo ": starship - starship.toml"
+
+cp ~/.bashrc ./bashrc/bashrc 2>/dev/null
+status_check
+echo ": bash - .bashrc"
