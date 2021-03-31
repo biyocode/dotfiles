@@ -1,7 +1,7 @@
 * {
   background-color: #46464620;
   text-color: #E9E9E9;
-  font: "Droid sans mono 11";
+  font: "Fira Code Retina 10";
   spacing: 0;
   width: 712px;
   height: 360px;

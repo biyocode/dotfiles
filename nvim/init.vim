@@ -4,8 +4,9 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'ghifarit53/tokyonight-vim'
   Plug 'Yggdroot/indentLine'
   Plug 'scrooloose/nerdtree'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'Raimondi/delimitMate'
+  Plug 'vim-airline/vim-airline'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 """colors
 set termguicolors
@@ -18,6 +19,7 @@ autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 " these settings let you copy to clipboard from vim, use y to copy selection
 set mouse=nvi
 set clipboard=unnamedplus
+set guicursor=i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150
 """standard
 syntax on
 set encoding=utf-8
@@ -82,7 +84,7 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 """ Plugin Settings
 "" cock - CocUninstall, CocConfig
 " python https://github.com/neoclide/coc-python
-let g:coc_global_extensions = ['coc-python', 'coc-emmet', 'coc-css', 'coc-html']
+let g:coc_global_extensions = ['coc-pyright', 'coc-emmet', 'coc-css', 'coc-html']
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "GoTo code navigation

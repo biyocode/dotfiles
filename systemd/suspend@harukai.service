@@ -1,0 +1,13 @@
+[Unit]
+Description=light-locker
+Before=sleep.target
+
+[Service]
+User=%i
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/home/harukai/.harukai.scripts/lockscreen
+ExecStartPost=/usr/bin/sleep 1
+
+[Install]
+WantedBy=sleep.target
