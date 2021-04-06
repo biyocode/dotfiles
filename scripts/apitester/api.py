@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Might consider adding alias nvim ../apitester/body.py for faster access"""
+"""to future me:
+make way to edit profile keys in a simple way. thx
+"""
 import requests
 import sys
 import g
