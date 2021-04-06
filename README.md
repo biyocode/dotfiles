@@ -11,3 +11,7 @@
  - Compositor: picom
  - Menu: rofi
  - File Explorer: thunar-git
+
+## Scripts
+ - Apitester: terminal api tester
+  - `apitester [command] [options] [profile_name]`

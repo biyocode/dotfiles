@@ -6,7 +6,9 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'scrooloose/nerdtree'
   Plug 'Raimondi/delimitMate'
   Plug 'vim-airline/vim-airline'
+  Plug 'puremourning/vimspector'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call plug#end()
 """colors
 set termguicolors
@@ -83,8 +85,7 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 """ Plugin Settings
 "" cock - CocUninstall, CocConfig
-" python https://github.com/neoclide/coc-python
-let g:coc_global_extensions = ['coc-pyright', 'coc-emmet', 'coc-css', 'coc-html']
+let g:coc_global_extensions = ['coc-pyright', 'coc-emmet', 'coc-css', 'coc-html', 'coc-omnisharp']
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "GoTo code navigation
@@ -104,7 +105,12 @@ let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Help '?'
 " Toggle
+" Move up dir 'u' in
+" Set root 'C'
+" Close all nodes 'x'
+" Fullscreen toggle 'A'
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 " use alt+hjkl to move between split/vsplit panels
 tnoremap <A-h> <C-\><C-n><C-w>h
@@ -115,7 +121,20 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+nnoremap <A-Left> <C-w>h
+nnoremap <A-Down> <C-w>j
+nnoremap <A-Up> <C-w>k
+nnoremap <A-Right> <C-w>l
 " delimitMate to turn off autocomplete on specific words:
 " au FileType mail let b:delimitMate_autoclose = 0 : this turns off for 'mail'
 """ Custom
 au BufNewFile *.html 0r ~/.config/nvim/html.skel | let IndentStyle = "html"
+""" Vimspector
+" https://github.com/puremourning/vimspector#human-mode
+let g:vimspector_enable_mappings = 'HUMAN'
+""" Fzf
+nnoremap <C-f> :FZF<CR>
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-i': 'split',
+  \ 'ctrl-v': 'vsplit' }

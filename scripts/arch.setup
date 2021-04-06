@@ -29,6 +29,9 @@ sudo pacman -S sof-firmware alsa-ucm-conf --noconfirm
 # bluetooth
 sudo pacman -S bluez bluez-utils blueman --noconfirm
 sudo systemctl enable bluetooth
+# CPU Thermal Manager
+sudo pacman -S thermald --noconfirm
+sudo systemctl enable thermald
 # https://wiki.archlinux.org/index.php/Feh
 # ADD i3 EXEC: feh --bg-scale /path/to/image.file
 sudo pacman -S feh --noconfirm
@@ -72,6 +75,7 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 sudo pacman -S docker docker-compose --noconfirm
 sudo groupadd docker
 sudo usermod -aG docker ${USER}
+# https://wiki.archlinux.org/index.php/PostgreSQL
 sudo pacman -S mariadb postgresql --noconfirm
 sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 # set i3 config to exec konsole

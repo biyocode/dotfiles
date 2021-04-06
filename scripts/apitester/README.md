@@ -1,0 +1,4 @@
+# Apitester
+
+## Setup
+Run `./setup`

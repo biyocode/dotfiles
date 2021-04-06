@@ -9,8 +9,8 @@ alias cp="cp -i"
 alias df="df -h"
 alias v="nvim"
 alias ..="cd .."
-alias ll="ls -l"
-alias lll="ls -la"
+alias ll="exa -lg"
+alias lll="exa -lga"
 alias passc="pass -c"
 alias venva="source venv/bin/activate"
 alias venvd="deactivate"
@@ -52,3 +52,4 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

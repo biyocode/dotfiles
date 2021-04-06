@@ -40,6 +40,6 @@ cp ~/.bashrc ./bashrc/bashrc 2>/dev/null
 status_check
 echo ": bash - .bashrc"
 
-cp ~/etc/acpi/handler.sh ./acpi/handler.sh 2>/dev/null
+sudo cp ~/etc/acpi/handler.sh ./acpi/handler.sh 2>/dev/null
 status_check
 echo ": acpi - handler.sh"
