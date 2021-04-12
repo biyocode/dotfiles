@@ -9,7 +9,15 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'puremourning/vimspector'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'dbakker/vim-projectroot'
+  Plug 'OmniSharp/omnisharp-vim'
+  Plug 'dense-analysis/ale'
 call plug#end()
+
+"####################
+"### Vim Settings ###
+"####################
 """colors
 set termguicolors
 set t_Co=256
@@ -23,6 +31,7 @@ set mouse=nvi
 set clipboard=unnamedplus
 set guicursor=i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150
 """standard
+let mapleader = " "
 syntax on
 set encoding=utf-8
 set novisualbell
@@ -52,21 +61,38 @@ else
 endif
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-"""language settings
+
+
+"#########################
+"### Language Settings ###
+"#########################
+"### Python ###
 augroup python
     autocmd!
     autocmd FileType python
                 \   syn keyword pythonBuiltin self
                 \   syn keyword pythonBuiltin cls
 augroup end
-"""spacing
-filetype plugin indent off
+"### C# ###
+autocmd FileType cshtml setlocal filetype=html
+
+
+"###############
+"### Spacing ###
+"###############
+filetype plugin indent on
 set expandtab
 set tabstop=2
 set shiftwidth=2
 autocmd FileType c setlocal tabstop=8 shiftwidth=8
+autocmd FileType cs setlocal tabstop=4 shiftwidth=4
+autocmd FileType cshtml setlocal tabstop=4 shiftwidth=4
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 sts=4
-"""integrated terminal
+
+
+"#####################
+"### Nvim Terminal ###
+"#####################
 " open new split panes to right and below
 set splitright
 set splitbelow
@@ -83,36 +109,40 @@ nnoremap <c-n> :call OpenTerminal()<CR>
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
-""" Plugin Settings
-"" cock - CocUninstall, CocConfig
+
+"############## Plugin Settings ################
+
+"######################################
+"### cock - CocUninstall, CocConfig ###
+"######################################
 let g:coc_global_extensions = ['coc-pyright', 'coc-emmet', 'coc-css', 'coc-html', 'coc-omnisharp']
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "GoTo code navigation
 nmap <leader>g <C-o>
 nmap <silent> gd <Plug>(coc-definition)
+nmap <leader>rn <Plug>(coc-rename)
 nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-nmap <leader>rn <Plug>(coc-rename)
 "" indentLines
 let g:indentLine_enabled = 1
 let g:indentLine_char = '│'
-"" Nerdtree
+
+
+"################
+"### Nerdtree ###
+"################ Toggle help (in tree): ?
+" Move up dir 'u' in, set selected to root 'C, close all nodes 'x'
+" Fullscreen toggle 'A'
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" Help '?'
-" Toggle
-" Move up dir 'u' in
-" Set root 'C'
-" Close all nodes 'x'
-" Fullscreen toggle 'A'
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
-" use alt+hjkl to move between split/vsplit panels
+" use alt+hjkl/arrows to move between split/vsplit panels
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
 tnoremap <A-k> <C-\><C-n><C-w>k
@@ -127,14 +157,42 @@ nnoremap <A-Up> <C-w>k
 nnoremap <A-Right> <C-w>l
 " delimitMate to turn off autocomplete on specific words:
 " au FileType mail let b:delimitMate_autoclose = 0 : this turns off for 'mail'
-""" Custom
+
+"#########################
+"### Custom Automation ###
+"#########################
 au BufNewFile *.html 0r ~/.config/nvim/html.skel | let IndentStyle = "html"
-""" Vimspector
+
+"################
+"## Vimspector ##
+"################
 " https://github.com/puremourning/vimspector#human-mode
 let g:vimspector_enable_mappings = 'HUMAN'
-""" Fzf
-nnoremap <C-f> :FZF<CR>
+
+"##############################
+"### Fzf + Rg + Root Finder ###
+"##############################
+nnoremap <C-f> :ProjectRootExe Files<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-i': 'split',
   \ 'ctrl-v': 'vsplit' }
+nnoremap <silent> <Leader>f yaw:ProjectRootExe Rg<CR>
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+" Change this for new languages if it cannot find the root
+let g:rootmarkers = ['venv/', '.git']
+
+"#####################
+"### Omnisharp Vim ###
+"#####################
+"let g:OmniSharp_selector_ui = 'fzf'
+"let g:OmniSharp_selector_findusages = 'fzf'
+" go back to original file
+nnoremap <A-b> <C-^>
+nnoremap <silent> <A-i> :OmniSharpFindImplementations<CR>
+nnoremap <silent> <A-p> :OmniSharpPreviewImplementation<CR>
+
+"###########
+"### Ale ###
+"###########
+let g:ale_linters = { 'cs': ['OmniSharp'] }

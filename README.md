@@ -1,12 +1,12 @@
 # Dotfiles
 
 ## Current Machine: Arch
+ - Shell: bash
+   - Prompt: Starship
  - WM: bspwm
  - DM: lightdm
  - Terminal: kitty
  - Editor: neovim
- - Shell: bash
-   - Prompt: Starship
  - Status Bar: polybar
  - Compositor: picom
  - Menu: rofi
@@ -14,4 +14,5 @@
 
 ## Scripts
  - Apitester: terminal api tester
-  - `apitester [command] [options] [profile_name]`
+   - `apitester [command] [options] [profile_name]`
+   - `apitesteredit`

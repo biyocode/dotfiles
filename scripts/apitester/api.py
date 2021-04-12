@@ -38,7 +38,7 @@ def check_param(args):
 def format_time(req):
     seconds = req.elapsed.total_seconds()
     if seconds < 1:
-        ms = f"{seconds*1000}ms"
+        ms = f"{seconds*1000:.2f}ms"
         return ms
     s = f"{seconds:.2f}s"
     return s
@@ -47,9 +47,9 @@ def result(req, d):
     print(f"{g.CY}STATUS:{g.R}")
     elap = format_time(req)
     if req.status_code == 200:
-        print(f"{g.GR}{req.status_code} - {elap}{g.R}")
+        print(f"{g.GR}{req.request.method} {req.status_code} - {elap}{g.R}")
     else:
-        print(f"{g.RE}{req.status_code} - {elap}{g.R}")
+        print(f"{g.RE}{req.request.method} {req.status_code} - {elap}{g.R}")
     print(f"{g.CY}URL:{g.R}")
     print(f"{d['url']}")
     print(f"{g.CY}HEADERS:{g.R}")

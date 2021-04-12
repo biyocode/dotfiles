@@ -125,3 +125,4 @@ sudo pacman -S bash-completion
 
 #extras
 sudo pacman -S bat
+sudo pacman -S ripgrep
