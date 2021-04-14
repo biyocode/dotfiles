@@ -13,6 +13,7 @@ def lister(*args, **kwargs):
         print(f"{g.CY}{name} - {v['url']}{g.R}")
 
 def check_param(args):
+    data = False
     if "-p" in args:
         args.remove("-p")
         profile = DATA[args[0]]
@@ -25,7 +26,6 @@ def check_param(args):
     body = profile["body"]
     headers = profile["headers"]
     params = None
-    data = False
     res = {
         "url": url,
         "body": body,

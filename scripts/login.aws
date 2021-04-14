@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-source globals
-source functions
+source utils/globals
+source utils/functions
 LOGIN_URL=""
 USERNAME=""
 PASS_FOLDER=""

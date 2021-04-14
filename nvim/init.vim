@@ -6,13 +6,10 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'scrooloose/nerdtree'
   Plug 'Raimondi/delimitMate'
   Plug 'vim-airline/vim-airline'
-  Plug 'puremourning/vimspector'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'dbakker/vim-projectroot'
-  Plug 'OmniSharp/omnisharp-vim'
-  Plug 'dense-analysis/ale'
 call plug#end()
 
 "####################
@@ -61,6 +58,8 @@ else
 endif
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
+" go back to original file
+nnoremap <A-b> <C-^>
 
 
 "#########################
@@ -88,6 +87,7 @@ autocmd FileType c setlocal tabstop=8 shiftwidth=8
 autocmd FileType cs setlocal tabstop=4 shiftwidth=4
 autocmd FileType cshtml setlocal tabstop=4 shiftwidth=4
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 sts=4
+autocmd FileType js setlocal tabstop=2 shiftwidth=2 sts=2
 
 
 "#####################
@@ -125,7 +125,10 @@ nmap <leader>rn <Plug>(coc-rename)
 nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-"" indentLines
+
+"###################
+"### indentLines ###
+"###################
 let g:indentLine_enabled = 1
 let g:indentLine_char = '│'
 
@@ -163,11 +166,6 @@ nnoremap <A-Right> <C-w>l
 "#########################
 au BufNewFile *.html 0r ~/.config/nvim/html.skel | let IndentStyle = "html"
 
-"################
-"## Vimspector ##
-"################
-" https://github.com/puremourning/vimspector#human-mode
-let g:vimspector_enable_mappings = 'HUMAN'
 
 "##############################
 "### Fzf + Rg + Root Finder ###
@@ -181,18 +179,3 @@ nnoremap <silent> <Leader>f yaw:ProjectRootExe Rg<CR>
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 " Change this for new languages if it cannot find the root
 let g:rootmarkers = ['venv/', '.git']
-
-"#####################
-"### Omnisharp Vim ###
-"#####################
-"let g:OmniSharp_selector_ui = 'fzf'
-"let g:OmniSharp_selector_findusages = 'fzf'
-" go back to original file
-nnoremap <A-b> <C-^>
-nnoremap <silent> <A-i> :OmniSharpFindImplementations<CR>
-nnoremap <silent> <A-p> :OmniSharpPreviewImplementation<CR>
-
-"###########
-"### Ale ###
-"###########
-let g:ale_linters = { 'cs': ['OmniSharp'] }

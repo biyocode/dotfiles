@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # This setups and updates all scripts
 # It will fail if a script was removed
-source globals
-source functions
+source utils/globals
+source utils/functions
 if [ ! -d $SCRIPT_FOLDER ];
 then
   mkdir "$SCRIPT_FOLDER"

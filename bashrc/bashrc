@@ -18,6 +18,7 @@ alias venvd="deactivate"
 alias gstat="git status"
 alias gdiff="git diff"
 alias gadd="git add"
+alias gcheck="git checkout"
 alias mpush="git push origin master"
 alias recentlyadded="grep -i installed /var/log/pacman.log"
 # Custom Alias Packages
@@ -54,6 +55,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 alias apitester="python /home/harukai/.harukai.scripts/apitester/api.py"
 alias apitesteredit="nvim /home/harukai/.harukai.scripts/apitester/profile_data.py"
 

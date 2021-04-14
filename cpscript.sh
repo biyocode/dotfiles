@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # update only necessary changes
-source scripts/globals
-source scripts/functions
+source scripts/utils/globals
+source scripts/utils/functions
 echo -e "${C}Updating all dotfiles on Arch 0:${NC}"
 
 cp ~/.config/nvim/init.vim ./nvim/ 2> /dev/null
@@ -39,7 +39,3 @@ echo ": starship - starship.toml"
 cp ~/.bashrc ./bashrc/bashrc 2>/dev/null
 status_check
 echo ": bash - .bashrc"
-
-sudo cp ~/etc/acpi/handler.sh ./acpi/handler.sh 2>/dev/null
-status_check
-echo ": acpi - handler.sh"
