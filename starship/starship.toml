@@ -5,7 +5,6 @@ add_newline = false
 vicmd_symbol = "[V](bold green) "
 format = """
 [┌──────────────────────────────────────────────](bold fg:#CC99CC)
-[│](bold fg:#CC99CC)$directory$rust$package
 [└─>](bold fg:#CC99CC) """
 
 [username]

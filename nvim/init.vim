@@ -115,7 +115,7 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 "######################################
 "### cock - CocUninstall, CocConfig ###
 "######################################
-let g:coc_global_extensions = ['coc-pyright', 'coc-emmet', 'coc-css', 'coc-html', 'coc-omnisharp']
+let g:coc_global_extensions = ['coc-pyright', 'coc-emmet', 'coc-css', 'coc-html', 'coc-vetur']
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "GoTo code navigation

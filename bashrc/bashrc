@@ -56,9 +56,8 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+# Custom Scripts
 alias apitester="python /home/harukai/.harukai.scripts/apitester/api.py"
 alias apitesteredit="nvim /home/harukai/.harukai.scripts/apitester/profile_data.py"
-
-if [ "$(echo $_JAVA_AWT_WM_NONREPARENTING)" != "1" ]; then
-  export _JAVA_AWT_WM_NONREPARENTING=1
-fi
+alias expenseauto="cd /home/harukai/00/coldpocket/expense;venva;echo 'Use expense add --dbx'"

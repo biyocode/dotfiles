@@ -6,16 +6,17 @@ source utils/functions
 if [ ! -d $SCRIPT_FOLDER ];
 then
   mkdir "$SCRIPT_FOLDER"
+  mkdir "$SCRIPT_FOLDER/utils"
 fi
 # Setup
-cp globals "$SCRIPT_FOLDER"
-cp functions "$SCRIPT_FOLDER"
+cp utils/globals "$SCRIPT_FOLDER/utils"
+cp utils/functions "$SCRIPT_FOLDER/utils"
 echo -e "${C}Updating all scripts:${NC}"
 
 cp login.aws "$SCRIPT_FOLDER"
 status_check
 echo ": login.aws"
 
-cp gitremote_token.py "$SCRIPT_FOLDER"
+cp ssh.profiler "$SCRIPT_FOLDER"
 status_check
-echo ": gitremote_token.py"
+echo ": ssh.profiler"
