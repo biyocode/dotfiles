@@ -8,3 +8,4 @@ instance/
 dist/
 build/
 *.egg-info/
+plugged/

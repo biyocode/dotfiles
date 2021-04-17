@@ -4,9 +4,9 @@ source scripts/utils/globals
 source scripts/utils/functions
 echo -e "${C}Updating all dotfiles on Arch 0:${NC}"
 
-cp ~/.config/nvim/init.vim ./nvim/ 2> /dev/null
+cp -r ~/.config/nvim/* ./nvim 2> /dev/null
 status_check
-echo ": nvim - init.vim"
+echo ": nvim/"
 
 cp ~/.config/kitty/kitty.conf ./kitty/ 2> /dev/null
 status_check

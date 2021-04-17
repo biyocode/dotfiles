@@ -58,8 +58,12 @@ else
 endif
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-" go back to original file
-nnoremap <A-b> <C-^>
+
+" clear jump history on exit
+autocmd QuitPre * :clearjumps
+" b is back, n is next
+nnoremap <A-b> <C-o>
+nnoremap <A-n> <C-i>
 
 
 "#########################
@@ -72,6 +76,9 @@ augroup python
                 \   syn keyword pythonBuiltin self
                 \   syn keyword pythonBuiltin cls
 augroup end
+"debugger shortcut: insert breakpoint and save
+nnoremap <F9> "='breakpoint()'<C-M>p:w<CR>
+
 "### C# ###
 autocmd FileType cshtml setlocal filetype=html
 
@@ -83,9 +90,9 @@ filetype plugin indent on
 set expandtab
 set tabstop=2
 set shiftwidth=2
-autocmd FileType c setlocal tabstop=8 shiftwidth=8
-autocmd FileType cs setlocal tabstop=4 shiftwidth=4
-autocmd FileType cshtml setlocal tabstop=4 shiftwidth=4
+autocmd FileType c setlocal tabstop=8 shiftwidth=8 sts=8
+autocmd FileType cs setlocal tabstop=4 shiftwidth=4 sts=4
+autocmd FileType cshtml setlocal tabstop=4 shiftwidth=4 sts=4
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 sts=4
 autocmd FileType js setlocal tabstop=2 shiftwidth=2 sts=2
 
@@ -158,6 +165,7 @@ nnoremap <A-Left> <C-w>h
 nnoremap <A-Down> <C-w>j
 nnoremap <A-Up> <C-w>k
 nnoremap <A-Right> <C-w>l
+
 " delimitMate to turn off autocomplete on specific words:
 " au FileType mail let b:delimitMate_autoclose = 0 : this turns off for 'mail'
 
@@ -174,6 +182,7 @@ nnoremap <C-f> :ProjectRootExe Files<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-i': 'split',
+  \ 'ctrl-n': '! kitty --detach -e nvim ',
   \ 'ctrl-v': 'vsplit' }
 nnoremap <silent> <Leader>f yaw:ProjectRootExe Rg<CR>
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
