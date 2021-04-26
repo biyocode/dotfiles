@@ -173,6 +173,7 @@ nnoremap <A-Right> <C-w>l
 "### Custom Automation ###
 "#########################
 au BufNewFile *.html 0r ~/.config/nvim/html.skel | let IndentStyle = "html"
+au BufNewFile *.py 0r ~/.config/nvim/py.skel | let IndentStyle = "python"
 
 
 "##############################

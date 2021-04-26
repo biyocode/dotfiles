@@ -14,6 +14,7 @@ def lister(*args, **kwargs):
 
 def check_param(args):
     data = False
+    params = None
     if "-p" in args:
         args.remove("-p")
         profile = DATA[args[0]]
@@ -25,7 +26,6 @@ def check_param(args):
     url = profile["url"]
     body = profile["body"]
     headers = profile["headers"]
-    params = None
     res = {
         "url": url,
         "body": body,
@@ -38,7 +38,7 @@ def check_param(args):
 def format_time(req):
     seconds = req.elapsed.total_seconds()
     if seconds < 1:
-        ms = f"{seconds*1000:.2f}ms"
+        ms = f"{(seconds*1000):.2f}ms"
         return ms
     s = f"{seconds:.2f}s"
     return s
