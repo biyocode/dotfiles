@@ -9,7 +9,7 @@ alias cp="cp -i"
 alias df="df -h"
 alias v="nvim"
 alias ..="cd .."
-alias ll="exa -lg"
+alias ll="exa -lg --icons"
 alias lll="exa -lga"
 alias ux="chmod u+x"
 alias passc="pass -c"
@@ -27,6 +27,10 @@ alias recentlyadded="grep -i installed /var/log/pacman.log"
 # Custom Alias Packages
 alias ccat="/usr/bin/cat"
 alias cat="bat --style=header,grid"
+
+# Exa Colors https://the.exa.website/docs/colour-themes#colour-codes
+export EXA_COLORS="da=37:uu=35:gu=30;01:un=31:gn=31;01:ur=34:ux=34;01:ue=34;01:gx=33;01:tr=37:tx=37;01:sn=35:sb=35;01"
+export LS_COLORS="di=34;01"
 
 ### Custom Functions ###
 # File size

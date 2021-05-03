@@ -35,10 +35,14 @@ super + m
 
 # send the newest marked node to the newest preselected node
 
+# Toggle floating state
+super + t
+  {bspc node -t floating && window-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
+
 ### state/flags ###
 
 # set the window state
-super + {t,shift + t,s,f}
+super + ctrl + {t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
@@ -76,8 +80,8 @@ super + {_,shift + }{1-9,0}
 ### preselect ###
 
 # preselect the direction
-super + ctrl + {h,j,k,l}
-	bspc node -p {west,south,north,east}
+#super + ctrl + {h,j,k,l}
+#	bspc node -p {west,south,north,east}
 
 # preselect the ratio
 super + ctrl + {1-9}
@@ -96,12 +100,16 @@ super + ctrl + shift + space
 #
 
 # make window bigger with vim bindings
-super + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+#super + alt + {h,j,k,l}
+#	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # shrink window with vim bindings
-super + alt + shift + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+#super + alt + shift + {h,j,k,l}
+#	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# Resize window
+super + ctrl + {Left,Down,Up,Right}
+  bspwm_resize.sh {west,south,north,east}
 
 # Force window into direction
 super + shift + {Left,Down,Up,Right}

@@ -59,6 +59,8 @@ sudo pacman -S tumbler --noconfirm
 sudo pacman -S flameshot --noconfirm
 # GUI partitioning tool
 sudo pacman -S gparted --noconfirm
+# WM
+sudo pacman -S xdo bspwm sxhkd --noconfirm
 
 #https://wiki.archlinux.org/index.php/Power_management#Sleep_hooks
 # https://github.com/NoiSek/Aether

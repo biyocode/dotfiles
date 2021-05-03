@@ -10,6 +10,12 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'dbakker/vim-projectroot'
+  Plug 'preservim/nerdcommenter'
+  if has("nvim-0.5")
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+  endif
 call plug#end()
 
 "####################
@@ -188,4 +194,4 @@ let g:fzf_action = {
 nnoremap <silent> <Leader>f yaw:ProjectRootExe Rg<CR>
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 " Change this for new languages if it cannot find the root
-let g:rootmarkers = ['venv/', '.git']
+let g:rootmarkers = ['venv/', '.git', 'package-lock.json']
