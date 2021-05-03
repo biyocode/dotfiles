@@ -52,9 +52,6 @@ alias expenseauto="cd /home/harukai/00/coldpocket/expense;venva;echo 'Use expens
 bind "TAB:menu-complete"
 bind "set show-all-if-ambiguous on"
 eval "$(starship init bash)"
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-
 ### Japanese Keyboard ###
 export GTK\_IM\_MODULE=ibus
 export XMODIFIERS=@im=ibus
@@ -70,3 +67,7 @@ fi
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+### Fzf Vim ###
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!venv/*" --glob "!.vim/*" --glob "node_modules/*"'

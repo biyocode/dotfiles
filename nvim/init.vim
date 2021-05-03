@@ -192,6 +192,6 @@ let g:fzf_action = {
   \ 'ctrl-n': '! kitty --detach -e nvim ',
   \ 'ctrl-v': 'vsplit' }
 nnoremap <silent> <Leader>f yaw:ProjectRootExe Rg<CR>
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --glob '!.git/*' --glob '!venv/*' --glob '!node_modules/*' --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 " Change this for new languages if it cannot find the root
 let g:rootmarkers = ['venv/', '.git', 'package-lock.json']
