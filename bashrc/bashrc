@@ -29,7 +29,7 @@ alias ccat="/usr/bin/cat"
 alias cat="bat --style=header,grid"
 
 # Exa Colors https://the.exa.website/docs/colour-themes#colour-codes
-export EXA_COLORS="da=37:uu=35:gu=30;01:un=31:gn=31;01:ur=34:ux=34;01:ue=34;01:gx=33;01:tr=37:tx=37;01:sn=35:sb=35;01"
+export EXA_COLORS="da=37:uu=38;2;204;153;204:gu=38;5;240;01:un=31:gn=31;01:ur=34:ux=34;01:ue=34;01:gx=33;01:tr=37:tx=37;01:sn=38;5;81:sb=38;5;81"
 export LS_COLORS="di=34;01"
 
 ### Custom Functions ###
@@ -70,4 +70,4 @@ fi
 
 ### Fzf Vim ###
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!venv/*" --glob "!.vim/*" --glob "node_modules/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore --follow --glob "!.git/*" --glob "!venv/*" --glob "!.vim/*" --glob "!node_modules/*"'

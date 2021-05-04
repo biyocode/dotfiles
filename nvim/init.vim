@@ -185,13 +185,16 @@ au BufNewFile *.py 0r ~/.config/nvim/py.skel | let IndentStyle = "python"
 "##############################
 "### Fzf + Rg + Root Finder ###
 "##############################
+""" find file, check FZF_DEFAULT_COMMAND in bashrc for find flags
 nnoremap <C-f> :ProjectRootExe Files<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-i': 'split',
   \ 'ctrl-n': '! kitty --detach -e nvim ',
   \ 'ctrl-v': 'vsplit' }
+""" find string
 nnoremap <silent> <Leader>f yaw:ProjectRootExe Rg<CR>
+""" below is the rg default command for find string
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --glob '!.git/*' --glob '!venv/*' --glob '!node_modules/*' --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
-" Change this for new languages if it cannot find the root
+" Change this for new languages if find functions cannot find the root
 let g:rootmarkers = ['venv/', '.git', 'package-lock.json']
