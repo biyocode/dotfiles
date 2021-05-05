@@ -2,63 +2,117 @@
 ;%{A<button>:<command>:}text to make clickable%{A}
 
 [colors]
-background = #00000000
-background-alt = #00000000
-foreground = #ccc
-foreground-alt = #ffffff
-primary = #331E1E1E
-secondary = #ffffff
+background = #060813
+foreground = #E9E9E9
 alert = #711a26
+xwindow-fg = #CCC
+xwindow-prefix-fg = #C852B7
+bspwm-occupied-fg = #82DCC0
+bspwm-focused-fg = #97325e
+bspwm-focused-bg = #d3b57b
+bluetooth-fg = #62D8EC
+date-fg = #d3b57b
+volume-bar-fg = #d3b57b
+volume-indicator-fg = #C852B7
+volume-muted-fg = #FFA0AB
+battery-full-prefix-fg = #d3b57b
+battery-charging-prefix-fg = #3DE1CC
+ram-prefix-fg = #4039ac
+cpu-prefix-fg = #4039ac
+wifi-prefix-fg = #d3b57b
 
-[bar/topbar]
-width = 100%
-height = 28
-radius = 0.0
-fixed-center = true
-border-size = 0
-padding-left = 0
-padding-right = 4
+[fonts]
+font0 = Agave:style=Regular:pixelsize=12;2
+font1 = Font Awesome 5 Brands Regular:style=Regular:pixelsize=12;2
+font2 = Agave:style=Regular:pixelsize=12;2
+font3 = Font Awesome 5 Free:pixelsize=12;2
+font4 = Font Awesome 5 Free Solid:pixelsize=12;2
+font5 = Font Awesome 5 Brands:pixelsize=12;2
+
+[vars]
+bar-radius = 8
+bar-height = 3.2%
+bar-left-width = 25%
+bar-mid-width = 23%
+bar-right-width = 26%
+bar-y = 9
+bar-left-x = 9
+bar-mid-x = 750
+bar-right-x = 1411
+
+[bar/leftbar]
+modules-left = xwindow
+width = ${vars.bar-left-width}
+height = ${vars.bar-height}
+radius = ${vars.bar-radius}
+padding-left = 2
 module-margin-left = 1
 module-margin-right = 1
+; tray-position are app icons
 tray-position = none
-tray-padding = 2
-offset-y = 7
+offset-y = ${vars.bar-y}
+offset-x = ${vars.bar-left-x}
 wm-restack = bspwm
-; bar color
-border-color = #fff
 background = ${colors.background}
 foreground = ${colors.foreground}
-; used fonts
-font-0 = Agave:style=Regular:pixelsize=12;2
-font-1 = Font Awesome 5 Brands Regular:style=Regular:pixelsize=12;2
-font-2 = Agave:style=Regular:pixelsize=12;2
-font-3 = Font Awesome 5 Free:pixelsize=12;2
-font-4 = Font Awesome 5 Free Solid:pixelsize=12;2
-font-5 = Font Awesome 5 Brands:pixelsize=12;2
-; module positions
+font-0 = ${fonts.font0}
+font-1 = ${fonts.font1}
+font-2 = ${fonts.font2}
+font-3 = ${fonts.font3}
+font-4 = ${fonts.font4}
+
+[bar/midbar]
 modules-center = date bspwm
-modules-left = xwindow
-modules-right = cpu memory pulseaudio bluetooth xkeyboard wlan eth battery
-; scrolling action on the topbar
+width = ${vars.bar-mid-width}
+height = ${vars.bar-height}
+radius = ${vars.bar-radius}
+offset-y = ${vars.bar-y}
+offset-x = ${vars.bar-mid-x}
+module-margin-left = 1
+module-margin-right = 1
+background = ${colors.background}
+foreground = ${colors.foreground}
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
+font-0 = ${fonts.font0}
+font-1 = ${fonts.font1}
+font-2 = ${fonts.font2}
+font-3 = ${fonts.font3}
+font-4 = ${fonts.font4}
+
+[bar/rightbar]
+modules-center = cpu memory pulseaudio bluetooth xkeyboard wlan eth battery
+radius = ${vars.bar-radius}
+width = ${vars.bar-right-width}
+height = ${vars.bar-height}
+offset-y = ${vars.bar-y}
+offset-x = ${vars.bar-right-x}
+background = ${colors.background}
+foreground = ${colors.foreground}
 ; cursor shape when hovering and scrolling over bar icons
 cursor-click = pointer
 eursor-scroll = ns-resize
+module-margin-left = 1
+module-margin-right = 1
+font-0 = ${fonts.font0}
+font-1 = ${fonts.font1}
+font-2 = ${fonts.font2}
+font-3 = ${fonts.font3}
+font-4 = ${fonts.font4}
 
 [module/xwindow]
 type = internal/xwindow
 format = <label>
-format-padding = 3
-label =  %title%
+label = %title%
+label-foreground = ${colors.xwindow-fg}
+format-prefix = " "
+format-prefix-foreground = ${colors.xwindow-prefix-fg}
 label-maxlen = 50
 
 [module/xkeyboard]
 type = internal/xkeyboard
 layout-icon-default = %{A1:ibus-setup:}%{A}
 label-layout = %icon% %layout%
-label-layout-padding-left = 2
-label-layout-padding-right = 0
 format = <label-layout>
 blacklist-0 = caps lock
 click-left-exec = ibus-setup
@@ -68,27 +122,24 @@ type = internal/bspwm
 enable-scroll = false
 ;label-focused = 
 label-focused = 
-label-focused-foreground = #FF9CEE
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-foreground = ${colors.bspwm-focused-fg}
+label-focused-background = ${colors.bspwm-focused-bg}
 label-focused-padding = 1
 ; set label properties
 ;label-occupied =  
 label-occupied = 
 label-occupied-padding = 1
-label-occupied-foreground = ffffff
+label-occupied-foreground = ${colors.bspwm-occupied-fg}
 label-urgent = !
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 label-empty = 
-label-empty-foreground = ffffff
-label-empty-padding = 1
 
 [module/bluetooth]
 type = custom/text
-content = "  "
+content = ""
 format = <label>
-format-foreground = ${colors.secondary}
+content-foreground = ${colors.bluetooth-fg}
 click-left = bspc rule -a '*' -o state=floating rectangle=400x120+800+35 && kitty -e sudo polybarblue.sh
 click-middle = blueman-manager
 
@@ -99,9 +150,7 @@ interval = 1
 date = %Y-%m-%d%
 time = %H:%M
 label = %{A1:bspc rule -a '*' -o state=floating rectangle=250x250+800+35 && kitty -e polybarcal.sh:}%time% | %date%%{A}
-label-foreground = #fff
-label-padding-left = 5
-label-padding-right = 0
+label-foreground = ${colors.date-fg}
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -109,18 +158,18 @@ sink = alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__hw_sofhda
 use-ui-max = true
 interval = 5
 format-volume = <bar-volume>
-format-volume-margin = 2.5
 bar-volume-width = 5
-bar-volume-foreground-0 = #BAFFC9
+bar-volume-foreground-0 = ${colors.volume-bar-fg}
 bar-volume-gradient = false
 bar-volume-indicator = 
+bar-volume-indicator-foreground = ${colors.volume-indicator-fg}
 bar-volume-indicator-font = 2
 bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
 label-muted = 
-label-muted-foreground = #FFA0AB
+label-muted-foreground = ${colors.volume-muted-fg}
 click-middle = bspc rule -a '*' -o state=floating && pavucontrol
 
 [module/battery]
@@ -132,13 +181,13 @@ poll-interval = 5
 full-at = 99
 format-charging = <animation-charging>  <label-charging>
 label-charging = %percentage%%
-label-charging-foreground = #FF95F0
+animation-charging-foreground = ${colors.battery-charging-prefix-fg}
 label-discharging = %percentage%%
-format-discharging = <ramp-capacity>  <label-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
 ;label-charging =  
 format-full = <label-full>
 label-full = 
-label-full-foreground = #CF8FFF
+label-full-foreground = ${colors.battery-full-prefix-fg}
 ramp-capacity-0 = 
 ramp-capacity-1 =  
 ramp-capacity-2 = 
@@ -155,32 +204,29 @@ animation-charging-framerate = 750
 type = internal/memory
 interval = 5
 label = %percentage_used%%
-label-padding-right = 0
-label-padding-left = 2
-format-prefix = 
-format-prefix-foreground = #B1BDFF
+label-padding-left = 1
+format-prefix = ""
+format-prefix-foreground = ${colors.ram-prefix-fg}
 
 [module/cpu]
 type = internal/cpu
 interval = 5
-format-prefix =  
-format-prefix-foreground = #B1BDFF
+format-prefix = ""
+format-prefix-foreground = ${colors.cpu-prefix-fg}
 label = %percentage:2%%
 label-padding-right = 1
-label-padding-left = 1
 
 [module/wlan]
 type = internal/network
 interface = wlo1
 interval = 3
 format-connected-prefix = %{A1:nm-connection-editor:}%{A}
-format-connected-prefix-foreground = #B0E4E9
+format-connected-prefix-foreground = ${colors.wifi-prefix-fg}
 format-connected = <label-connected>
 label-connected = %essid%
+label-maxlen = 9
 label-connected-font = 2
-label-connected-padding-left = 2
-label-connected-padding-right = 2
-format-connected-prefix-padding-left = 2
+label-connected-padding-left = 1
 format-disconnected =
 
 [module/eth]
@@ -194,5 +240,5 @@ label-connected = %local_ip%
 screenchange-reload = true
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 4
+margin-bottom = 4
