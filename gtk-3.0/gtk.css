@@ -1,0 +1,12 @@
+.thunar {
+  background: none;
+}
+.thunar .sidebar {
+  background: none;
+}
+.thunar toolbar {
+  background: rgba(21,24,40,0.3);
+}
+window.thunar paned > scrolledwindow treeview.view {
+  background: rgba(21,24,40,0.3);
+}
