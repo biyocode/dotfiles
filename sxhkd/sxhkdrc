@@ -8,7 +8,7 @@ super + e
 	thunar
 # app launcher
 super + d
-	rofi -show drun -show-icons -display-drun "" -theme ~/.config/rofi/config.rasi
+	rofi -show drun -display-drun "" -theme ~/.config/rofi/config.rasi
 # screenshot
 Print
   flameshot gui

@@ -1,5 +1,5 @@
 * {
-  background-color: #46464620;
+  background-color: #06081315;
   text-color: #E9E9E9;
   font: "Fira Code Retina 10";
   spacing: 0;
@@ -10,13 +10,13 @@
 
 window {
   border: 1px;
-  border-color: #fff;
+  border-color: #060813;
 }
 
 inputbar {
   border: 0 0 1px 0;
   children: [prompt,entry];
-  border-color: #75A4CD01;
+  border-color: #060813;
   border-radius:0px;
 }
 
@@ -24,8 +24,8 @@ prompt {
   padding: 16px 16px 16px 16px;
   border-radius:0px;
   border: 0 1px 0 0;
-  border-color: #999;
-  text-color: #74EDE2;
+  border-color: #060813;
+  text-color: #FFBB53;
 }
 
 textbox {
@@ -58,7 +58,7 @@ element {
 }
 
 element selected {
-  background-color: #e8e8e820;
+  background-color: #545EC020;
   border-radius:0px;
   border: 0;
 }
