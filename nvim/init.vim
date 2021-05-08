@@ -1,16 +1,15 @@
-"""plugins
 " Common Commands - PlugInstall, PlugUpdate, PlugClean
 call plug#begin("~/.config/nvim/plugged")
-  Plug 'ghifarit53/tokyonight-vim'
-  Plug 'Yggdroot/indentLine'
-  Plug 'scrooloose/nerdtree'
-  Plug 'Raimondi/delimitMate'
-  Plug 'vim-airline/vim-airline'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
-  Plug 'dbakker/vim-projectroot'
-  Plug 'preservim/nerdcommenter'
+  Plug 'ghifarit53/tokyonight-vim' "theme
+  Plug 'Yggdroot/indentLine' "showing indents
+  Plug 'scrooloose/nerdtree' "folder tree
+  Plug 'vim-airline/vim-airline' "statusbar
+  Plug 'neoclide/coc.nvim', {'branch': 'release'} "lsp
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } "finder
+  Plug 'junegunn/fzf.vim' "finder
+  Plug 'dbakker/vim-projectroot' "finder extension
+  Plug 'preservim/nerdcommenter' "block commenting
+  Plug 'mhinz/vim-grepper' "search replace all
   if has("nvim-0.5")
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
@@ -21,16 +20,15 @@ call plug#end()
 "####################
 "### Vim Settings ###
 "####################
-"""colors
+"""colors, reset to use xresources instead
 set termguicolors
 set t_Co=256
-let g:tokyonight_style = 'night' " available: night, storm
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+let g:tokyonight_style = 'night'
 let g:tokyonight_enable_italic = 1
 colorscheme tokyonight
-autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 """mouse
-" these settings let you copy to clipboard from vim, use y to copy selection
-set mouse=nvi
+set mouse=nvi " these settings let you copy to clipboard from vim, use y to copy selection
 set clipboard=unnamedplus
 set guicursor=i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150
 """standard
@@ -65,17 +63,28 @@ endif
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" clear jump history on exit
-autocmd QuitPre * :clearjumps
+"#######################
+"### Custom Commands ###
+"#######################
+""###### Search and replace ######
+" Replace highlighted word(s)
+nnoremap <Leader>r :%s///g<Left><Left>
+" Strict matching word under cursor
+nnoremap <Leader>m ?\<\><left><left><C-r><C-w><CR>
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+"########## File Jumping #########
 " b is back, n is next
-nnoremap <A-b> <C-o>
-nnoremap <A-n> <C-i>
-
+nnoremap <A-b> :bnext<CR>
+nnoremap <A-n> :bprevious<CR>
+" clear jump history on new file entry
+autocmd VimEnter * :clearjumps
 
 "#########################
 "### Language Settings ###
 "#########################
 "### Python ###
+" I dont know why syntax doesnt highlight these
 augroup python
     autocmd!
     autocmd FileType python
@@ -87,7 +96,6 @@ nnoremap <F9> "='breakpoint()'<C-M>p:w<CR>
 
 "### C# ###
 autocmd FileType cshtml setlocal filetype=html
-
 
 "###############
 "### Spacing ###
@@ -101,7 +109,6 @@ autocmd FileType cs setlocal tabstop=4 shiftwidth=4 sts=4
 autocmd FileType cshtml setlocal tabstop=4 shiftwidth=4 sts=4
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 sts=4
 autocmd FileType js setlocal tabstop=2 shiftwidth=2 sts=2
-
 
 "#####################
 "### Nvim Terminal ###
@@ -119,32 +126,20 @@ function! OpenTerminal()
   resize 8
 endfunction
 nnoremap <c-n> :call OpenTerminal()<CR>
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
 
-
-"############## Plugin Settings ################
-
+"########## Plugin Settings ###########
 "######################################
 "### cock - CocUninstall, CocConfig ###
 "######################################
-let g:coc_global_extensions = ['coc-pyright', 'coc-emmet', 'coc-css', 'coc-html', 'coc-vetur']
+let g:coc_global_extensions = ['coc-pyright', 'coc-emmet', 'coc-css', 'coc-html', 'coc-vetur', 'coc-pairs']
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"GoTo code navigation
-nmap <leader>g <C-o>
-nmap <silent> gd <Plug>(coc-definition)
-nmap <leader>rn <Plug>(coc-rename)
-nmap <silent> gt <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 
 "###################
 "### indentLines ###
 "###################
 let g:indentLine_enabled = 1
 let g:indentLine_char = '│'
-
 
 "################
 "### Nerdtree ###
@@ -159,10 +154,6 @@ let g:NERDTreeStatusline = ''
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 " use alt+hjkl/arrows to move between split/vsplit panels
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
@@ -172,19 +163,15 @@ nnoremap <A-Down> <C-w>j
 nnoremap <A-Up> <C-w>k
 nnoremap <A-Right> <C-w>l
 
-" delimitMate to turn off autocomplete on specific words:
-" au FileType mail let b:delimitMate_autoclose = 0 : this turns off for 'mail'
-
 "#########################
 "### Custom Automation ###
 "#########################
 au BufNewFile *.html 0r ~/.config/nvim/html.skel | let IndentStyle = "html"
 au BufNewFile *.py 0r ~/.config/nvim/py.skel | let IndentStyle = "python"
 
-
-"##############################
-"### Fzf + Rg + Root Finder ###
-"##############################
+"######################
+"### Find Functions ###
+"######################
 """ find file, check FZF_DEFAULT_COMMAND in bashrc for find flags
 nnoremap <C-f> :ProjectRootExe Files<CR>
 let g:fzf_action = {
@@ -195,6 +182,22 @@ let g:fzf_action = {
 """ find string
 nnoremap <silent> <Leader>f yaw:ProjectRootExe Rg<CR>
 """ below is the rg default command for find string
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --glob '!.git/*' --glob '!venv/*' --glob '!node_modules/*' --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=* Rg call fzf#vim#grep(
+  \"rg --column --line-number --no-heading --color=always
+  \ --glob '!.git/*'
+  \ --glob '!venv/*'
+  \ --glob '!node_modules/*'
+  \ --glob '!*migrations*'
+  \ --smart-case ".shellescape(
+  \ <q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 " Change this for new languages if find functions cannot find the root
 let g:rootmarkers = ['venv/', '.git', 'package-lock.json']
+
+" search replace all within project folder
+let g:grepper={}
+let g:grepper.tools=["rg"]
+nnoremap <leader>R
+  \ :let @s='\<'.expand('<cword>').'\>'<CR>
+  \ :Grepper -cword -noprompt<CR>
+  \ :cfdo %s/<C-r>s//g \| update
+  \<left><left><left><left><left><left><left><left><left><left><left>

@@ -70,4 +70,10 @@ fi
 
 ### Fzf Vim ###
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='rg --files --hidden --no-ignore --follow --glob "!.git/*" --glob "!venv/*" --glob "!.vim/*" --glob "!node_modules/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --color=always'
+export FZF_DEFAULT_OPTS='--glob "!venv/*"'
+  \ ' --glob "!.vim/*"'
+  \ ' --glob "!node_modules/*"'
+  \ ' --glob "!*__pycache__*"'
+  \ ' --glob "!*migrations*"'
+  \ ' --glob "!*egg-info*"'
