@@ -55,8 +55,8 @@ yay -S exo-devel
 yay -S thunar-git
 # thunar thumbnails to show, check in config to always show too (requires restart)
 sudo pacman -S tumbler --noconfirm
-# screenshoter
-sudo pacman -S flameshot --noconfirm
+# screenshoter and gif capture
+sudo pacman -S flameshot peek --noconfirm
 # GUI partitioning tool
 sudo pacman -S gparted --noconfirm
 # WM
@@ -106,13 +106,6 @@ yay -S polybar otf-font-awesome-5-free --noconfirm
 sudo pacman -S discord --noconfirm
 yay -S slack-desktop
 
-### Themes ###
-# phocus theme deps
-sudo pacman -S sassc --noconfirm
-mkdir ~/temp
-# thunar transparency thing
-git clone https://github.com/JavaCafe01/phocus.git ~/temp/
-# make & sudo make install in temp/phocus
 # git config --global user.email "email"
 # git config --global user.name "github user"
 # git config --global credential.helper store

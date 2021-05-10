@@ -20,3 +20,7 @@ echo ": login.aws"
 cp ssh.profiler "$SCRIPT_FOLDER"
 status_check
 echo ": ssh.profiler"
+
+cp -r apitester "$SCRIPT_FOLDER"
+status_check
+echo ": apitester/"

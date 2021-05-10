@@ -66,19 +66,34 @@ set shortmess+=c
 "#######################
 "### Custom Commands ###
 "#######################
-""###### Search and replace ######
-" Replace highlighted word(s)
-nnoremap <Leader>r :%s///g<Left><Left>
-" Strict matching word under cursor
-nnoremap <Leader>m ?\<\><left><left><C-r><C-w><CR>
-" <Ctrl-l> redraws the screen and removes any search highlighting.
+"########## Surrounding #########
+nnoremap <leader>e{ bcw{}<ESC>P
+nnoremap <leader>e[ bcw[]<ESC>P
+nnoremap <leader>e< bcw<><ESC>P
+nnoremap <leader>e( bcw()<ESC>P
+nnoremap <leader>e' bcw''<ESC>P
+nnoremap <leader>e" bcw""<ESC>P
+
+"###### Search and replace ######
+" Replace word(s) under cursor
+nnoremap <leader>r /\<\><left><left><C-r><C-w><CR>:%s///g<Left><Left>
+" redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
-"########## File Jumping #########
+"######### File Jumping #########
 " b is back, n is next
 nnoremap <A-b> :bnext<CR>
 nnoremap <A-n> :bprevious<CR>
 " clear jump history on new file entry
 autocmd VimEnter * :clearjumps
+
+" jump to first occurrance of pattern query
+function! Jumpy()
+   call inputsave()
+   let jumpyLetters = input("Jump: ")
+   call inputrestore()
+   execute "normal \<s-V>\/".jumpyLetters."\<CR>\<ESC>\:nohl\<CR>\<C-l>"
+endfunction
+nnoremap <silent> <leader>q :call Jumpy()<CR>
 
 "#########################
 "### Language Settings ###
@@ -173,7 +188,7 @@ au BufNewFile *.py 0r ~/.config/nvim/py.skel | let IndentStyle = "python"
 "### Find Functions ###
 "######################
 """ find file, check FZF_DEFAULT_COMMAND in bashrc for find flags
-nnoremap <C-f> :ProjectRootExe Files<CR>
+nnoremap <C-f> :ProjectRootExe GFiles<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-i': 'split',
@@ -182,14 +197,13 @@ let g:fzf_action = {
 """ find string
 nnoremap <silent> <Leader>f yaw:ProjectRootExe Rg<CR>
 """ below is the rg default command for find string
-command! -bang -nargs=* Rg call fzf#vim#grep(
-  \"rg --column --line-number --no-heading --color=always
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always\
   \ --glob '!.git/*'
   \ --glob '!venv/*'
   \ --glob '!node_modules/*'
   \ --glob '!*migrations*'
-  \ --smart-case ".shellescape(
-  \ <q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+  \ --glob '!setup.py'
+  \ --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 " Change this for new languages if find functions cannot find the root
 let g:rootmarkers = ['venv/', '.git', 'package-lock.json']
 
