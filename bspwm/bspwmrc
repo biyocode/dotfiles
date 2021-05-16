@@ -29,6 +29,6 @@ picom -b
 ~/.fehbg &
 dunst &
 setxkbmap -layout us &
-polybar -r leftbar &
-polybar -r midbar &
-polybar -r rightbar &
+polybar leftbar &
+polybar midbar &
+polybar rightbar &

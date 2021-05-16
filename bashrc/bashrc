@@ -23,6 +23,7 @@ alias gcheck="git checkout"
 alias gpush="git push"
 alias mpush="git push origin master"
 alias recentlyadded="grep -i installed /var/log/pacman.log"
+alias c="clear"
 
 # Custom Alias Packages
 alias ccat="/usr/bin/cat"
@@ -72,11 +73,11 @@ fi
 
 ### Fzf Vim ###
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow
-  \ --glob "!.git/*"
-  \ --glob "!venv/*"
-  \ --glob "!.vim/*"
-  \ --glob "!node_modules/*"
-  \ --glob "!*__pycache__*"
-  \ --glob "!*migrations*"
-  \ --glob "!*egg-info*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"
+  \ --ignore-file .gitignore'
+  #\ --glob "!venv/*"
+  #\ --glob "!.vim/*"
+  #\ --glob "!node_modules/*"
+  #\ --glob "!*__pycache__*"
+  #\ --glob "!*migrations*"
+source /usr/share/nvm/init-nvm.sh

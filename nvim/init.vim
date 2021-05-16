@@ -23,10 +23,13 @@ call plug#end()
 """colors, reset to use xresources instead
 set termguicolors
 set t_Co=256
-autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+autocmd vimenter * hi Normal guibg=none ctermbg=none
+autocmd vimenter * hi EndOfBuffer guibg=none ctermbg=none
 let g:tokyonight_style = 'night'
 let g:tokyonight_enable_italic = 1
 colorscheme tokyonight
+" check mythemes/airline -> vim-airline/autoload/airline/themes
+let g:airline_theme='navarch'
 """mouse
 set mouse=nvi " these settings let you copy to clipboard from vim, use y to copy selection
 set clipboard=unnamedplus
@@ -46,7 +49,6 @@ set number
 set relativenumber
 set wildmenu
 set ruler  
-""coc
 set hidden
 set nobackup
 set nowritebackup
@@ -81,8 +83,8 @@ nnoremap <leader>r /\<\><left><left><C-r><C-w><CR>:%s///g<Left><Left>
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 "######### File Jumping #########
 " b is back, n is next
-nnoremap <A-b> :bnext<CR>
-nnoremap <A-n> :bprevious<CR>
+nnoremap <A-b> :bprevious<CR>
+nnoremap <A-n> :bnext<CR>
 " clear jump history on new file entry
 autocmd VimEnter * :clearjumps
 
@@ -107,7 +109,7 @@ augroup python
                 \   syn keyword pythonBuiltin cls
 augroup end
 "debugger shortcut: insert breakpoint and save
-nnoremap <F9> "='breakpoint()'<C-M>p:w<CR>
+imap <F9> breakpoint()<ESC>:w<CR>
 
 "### C# ###
 autocmd FileType cshtml setlocal filetype=html
@@ -188,7 +190,8 @@ au BufNewFile *.py 0r ~/.config/nvim/py.skel | let IndentStyle = "python"
 "### Find Functions ###
 "######################
 """ find file, check FZF_DEFAULT_COMMAND in bashrc for find flags
-nnoremap <C-f> :ProjectRootExe GFiles<CR>
+nnoremap <C-f> :ProjectRootExe Files<CR>
+nnoremap <Leader>gf :ProjectRootExe GFiles<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-i': 'split',
@@ -198,14 +201,10 @@ let g:fzf_action = {
 nnoremap <silent> <Leader>f yaw:ProjectRootExe Rg<CR>
 """ below is the rg default command for find string
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always\
-  \ --glob '!.git/*'
-  \ --glob '!venv/*'
-  \ --glob '!node_modules/*'
-  \ --glob '!*migrations*'
-  \ --glob '!setup.py'
+  \ --ignore-file .gitignore
   \ --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 " Change this for new languages if find functions cannot find the root
-let g:rootmarkers = ['venv/', '.git', 'package-lock.json']
+let g:rootmarkers = ['venv', '.git', 'package-lock.json']
 
 " search replace all within project folder
 let g:grepper={}

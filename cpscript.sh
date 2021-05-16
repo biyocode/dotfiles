@@ -47,3 +47,11 @@ echo ": bash - .bashrc"
 cp ~/.Xresources ./x/Xresources 2>/dev/null
 status_check
 echo ": x - .Xresources"
+
+cp ~/.fzf/shell/key-bindings.bash ./fzf/key-bindings.bash 2>/dev/null
+status_check
+echo ": fzf - key-bindings.bash"
+
+cp ~/.fzfignore ./fzf/fzfignore 2>/dev/null
+status_check
+echo ": fzf - .fzfignore"
