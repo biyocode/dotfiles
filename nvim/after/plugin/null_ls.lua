@@ -3,7 +3,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup({
     sources = {
         null_ls.builtins.formatting.black, null_ls.builtins.formatting.autopep8,
-        null_ls.builtins.formatting.prettier,
+        null_ls.builtins.formatting.prettier_d_slim,
         null_ls.builtins.formatting.lua_format
     },
     -- you can reuse a shared lspconfig on_attach callback here
@@ -14,7 +14,12 @@ null_ls.setup({
                 group = augroup,
                 buffer = bufnr,
                 callback = function()
-                    vim.lsp.buf.format({bufnr = bufnr})
+                    vim.lsp.buf.format({
+                        bufnr = bufnr,
+                        filter = function(f_client)
+                            return f_client.name == "null-ls"
+                        end
+                    })
                 end
             })
         end

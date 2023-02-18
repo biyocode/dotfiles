@@ -35,7 +35,8 @@ local servers = {
         cmd = {"typescript-language-server", "--stdio"}
     },
     tailwindcss = {},
-    rust_analyzer = {}
+    rust_analyzer = {},
+    eslint = {}
 }
 
 require("mason").setup()
