@@ -15,6 +15,8 @@ vim.opt.updatetime = 50
 vim.opt.signcolumn = "no"
 vim.opt.scrolloff = 8
 
+vim.opt.autochdir = true
+
 -- Indenting
 vim.opt.smartindent = true
 vim.opt.tabstop = 4

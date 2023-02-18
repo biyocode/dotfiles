@@ -40,10 +40,12 @@ vim.keymap.set("n", "<leader>E'", "bcW''<ESC>P")
 vim.keymap.set("n", "<leader>E\"", "bcW\"\"<ESC>P")
 vim.keymap.set("n", "<leader>E`", "bcW``<ESC>P")
 
+-- Set current window as current root directory for searching
+vim.keymap.set("n", "<leader>sr", ":cd %:p:h<CR>")
 -- Rename in file only
 vim.keymap.set("n", "<leader>r",
                "/<left><left><C-r><C-w><CR>:%s///g<Left><Left>")
 
 -- Janky rename ALL (strict match)
--- vim.keymap.set("n", "<leader>R",
---                ":let @s=expand('<cword>') <CR> <BAR> :Grepper -cword -noprompt<CR> <BAR> :cfdo %s/<C-r>s//g | update <BAR> <left><left><left><left><left><left><left><left><left><left><left><left><left><left>")
+vim.keymap.set("n", "<leader>R",
+               ":let @s=expand('<cword>') <CR> <BAR> :Grepper -cword -noprompt<CR> <BAR> :cfdo %s/<C-r>s//g | update <BAR> <left><left><left><left><left><left><left><left><left><left><left><left><left><left>")
