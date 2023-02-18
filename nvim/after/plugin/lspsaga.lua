@@ -6,3 +6,9 @@ saga.setup({
 })
 local opts = {noremap = true, silent = true}
 vim.keymap.set("n", "gd", "<Cmd>Lspsaga lsp_finder<CR>", opts)
+
+vim.cmd [[autocmd CursorHold,CursorHoldI * Lspsaga show_cursor_diagnostics ++unfocus ]]
+vim.diagnostic.config({
+    float = {focusable = false, focus = false},
+    virtual_text = false
+})

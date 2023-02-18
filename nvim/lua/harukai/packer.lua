@@ -4,7 +4,10 @@ local use = require("packer").use
 require("packer").startup(function()
     use "wbthomason/packer.nvim" -- Package manager
     use({"catppuccin/nvim", as = "catppuccin"}) -- Theme
-    use "vim-airline/vim-airline" -- Statusbar | /home/harukai/.local/share/nvim/site/pack/packer/start/vim-airline/autoload/airline/themes
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
     use {"nvim-telescope/telescope.nvim", tag = "0.1.1"} -- Fuzzy Finder
     use "nvim-lua/plenary.nvim" -- UI Render?
     use("nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"}) -- Text highlighting

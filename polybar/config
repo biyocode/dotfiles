@@ -102,6 +102,26 @@ font-2 = ${fonts.font2}
 font-3 = ${fonts.font3}
 font-4 = ${fonts.font4}
 
+[bar/midbar2]
+monitor = HDMI-1
+modules-center = date bspwm
+width = ${vars.bar-mid-width}
+height = ${vars.bar-height}
+radius = ${vars.bar-radius}
+offset-y = ${vars.bar-y}
+offset-x = ${vars.bar-mid-x}
+module-margin-left = 1
+module-margin-right = 1
+background = ${colors.background}
+foreground = ${colors.foreground}
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+font-0 = ${fonts.font0}
+font-1 = ${fonts.font1}
+font-2 = ${fonts.font2}
+font-3 = ${fonts.font3}
+font-4 = ${fonts.font4}
+
 [module/xwindow]
 type = internal/xwindow
 format = <label>
@@ -121,6 +141,7 @@ click-left-exec = ibus-setup
 
 [module/bspwm]
 type = internal/bspwm
+pin-workspaces = true
 enable-scroll = false
 ;label-focused = 
 label-focused = 
@@ -142,8 +163,8 @@ type = custom/text
 content = ""
 format = <label>
 content-foreground = ${colors.bluetooth-fg}
-click-left = bspc rule -a '*' -o state=floating rectangle=400x120+800+35 && kitty -e sudo polybarblue.sh
-click-middle = blueman-manager
+click-middle = bspc rule -a '*' -o state=floating rectangle=400x120+775+48 && kitty -e sudo polybarblue.sh
+click-left = blueman-manager
 
 ;clicking requires polybarcal.sh in your /bin
 [module/date]
@@ -151,7 +172,7 @@ type = internal/date
 interval = 1
 date = %Y-%m-%d%
 time = %H:%M
-label = %{A1:bspc rule -a '*' -o state=floating rectangle=250x250+800+35 && kitty -e polybarcal.sh:}%time% | %date%%{A}
+label = %{A1:bspc rule -a '*' -o state=floating rectangle=250x250+775+45 && kitty -e polybarcal.sh:}%time% | %date%%{A}
 label-foreground = ${colors.date-fg}
 
 [module/pulseaudio]

@@ -8,7 +8,13 @@ killall -q polybar
 killall -q ibus-daemon
 
 # bspwm stuff
-bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+if [[ $(xrandr -q | grep -w connected | grep "HDMI-1") ]]
+then
+  bspc monitor eDP-1 -d 1 2 3 4 5 6
+  bspc monitor HDMI-1 -d 7 8 9 0
+else
+  bspc monitor eDP-1 -d 1 2 3 4 5 6 7 8 9
+fi
 bspc config top_padding          0
 bspc config border_width         1
 bspc config window_gap          14
@@ -32,3 +38,7 @@ setxkbmap -layout us &
 polybar leftbar &
 polybar midbar &
 polybar rightbar &
+if [[ $(xrandr -q | grep -w connected | grep "HDMI-1") ]]
+then
+  polybar midbar2 &
+fi

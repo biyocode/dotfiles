@@ -34,7 +34,8 @@ local servers = {
         filetypes = {"typescript", "typescriptreact", "typescript.tsx"},
         cmd = {"typescript-language-server", "--stdio"}
     },
-    tailwindcss = {}
+    tailwindcss = {},
+    rust_analyzer = {}
 }
 
 require("mason").setup()
@@ -51,5 +52,4 @@ mason_lspconfig.setup_handlers {
         }
     end
 }
-vim.diagnostic.config({float = {source = "always"}, virtual_text = false})
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+-- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float({bufnr=bufnr}, {focus=false, focusable=false})]]

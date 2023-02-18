@@ -4,9 +4,9 @@ source scripts/utils/globals
 source scripts/utils/functions
 echo -e "${C}Updating all dotfiles on Arch 0:${NC}"
 
-rsync -av ~/.config/nvim/* --exclude plugged/ ./nvim 2> /dev/null
-status_check
-echo ": nvim/"
+# rsync -av ~/.config/nvim/* --exclude plugged/ ./nvim 2> /dev/null
+# status_check
+# echo ": nvim/"
 
 cp ~/.config/kitty/kitty.conf ./kitty/ 2> /dev/null
 status_check

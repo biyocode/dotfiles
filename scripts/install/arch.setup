@@ -22,6 +22,8 @@ sudo systemctl enable fstrim.timer
 sudo systemctl start fstrim.timer
 sudo pacman -S python-pip --noconfirm
 sudo pacman -S neofetch --noconfirm
+# dual+ monitors
+sudo pacman -S arandr --noconfirm
 # audio
 sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pulseaudio-bluetooth --noconfirm
 # software for newer audio cards
@@ -42,7 +44,7 @@ sudo pacman -S noto-fonts-emoji --noconfirm --needed
 #need to restart pc to see jp changes on some apps
 sudo pacman -S adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts otf-ipafont --noconfirm
 # picom kawase
-yay -S picom-ibhagwan-git
+sudo pacman -S picom
 #dmenu replacement
 sudo pacman -S rofi --noconfirm
 # ADD i3 EXEC: ibus-daemon -drx

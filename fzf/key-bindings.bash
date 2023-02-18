@@ -40,7 +40,7 @@ fzf-file-widget() {
 
 __fzf_cd__() {
   local cmd dir
-  cmd="${FZF_ALT_C_COMMAND:-"fd -t d -H --full-path=$HOME | uniq | sort -u"}"
+  cmd="${FZF_ALT_C_COMMAND:-"fd -t d -H -i --ignore-file ~/.fzfignore --search-path '$HOME' | uniq | sort -u"}"
   dir=$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --bind=ctrl-z:ignore $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m) && printf 'cd %q' "$dir"
 }
 

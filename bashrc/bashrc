@@ -24,16 +24,17 @@ alias gpush="git push"
 alias mpush="git push origin master"
 alias recentlyadded="grep -i installed /var/log/pacman.log"
 alias c="clear"
+alias sharekeys="screenkey -p fixed -g 54%x10%+24%-15% --opacity 0.45 -f 'Fire Code Bold'"
+alias mkdir="mkdir -p"
 
 # Custom Alias Packages
 alias ccat="/usr/bin/cat"
 alias cat="bat --style=header,grid"
 
 # Exa Colors https://the.exa.website/docs/colour-themes#colour-codes
-export EXA_COLORS="da=37:uu=38;2;204;153;204
-  \ :gu=38;5;240;01:un=31:gn=31;01
-  \ :ur=34:ux=34;01:ue=34;01:gx=33;01
-  \ :tr=37:tx=37;01:sn=38;5;81:sb=38;5;81"
+export EXA_COLORS="da=37:uu=38;2;204;153;204:
+  \ gu=38;5;240;01:un=31:gn=31;01:ur=34:ux=34;01:
+  \ ue=34;01:gx=33;01:tr=37:tx=37;01:sn=38;5;81:sb=38;5;81"
 export LS_COLORS="di=34;01"
 
 ### Custom Functions ###
@@ -81,3 +82,8 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"
   #\ --glob "!*__pycache__*"
   #\ --glob "!*migrations*"
 source /usr/share/nvm/init-nvm.sh
+
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION

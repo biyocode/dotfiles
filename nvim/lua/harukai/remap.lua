@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 
+-- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 -- Open project folder view
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -25,6 +26,8 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv'")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv'")
 
+-- Autopairs sometimes wraps things, and sometimes doesnt
+-- This is for wrapping a word in a pair
 vim.keymap.set("n", "<leader>e{", "bcw{}<ESC>P")
 vim.keymap.set("n", "<leader>e[", "bcw[]<ESC>P")
 vim.keymap.set("n", "<leader>e<", "bcw<><ESC>P")
@@ -32,13 +35,6 @@ vim.keymap.set("n", "<leader>e(", "bcw()<ESC>P")
 vim.keymap.set("n", "<leader>e'", "bcw''<ESC>P")
 vim.keymap.set("n", "<leader>e\"", "bcw\"\"<ESC>P")
 vim.keymap.set("n", "<leader>e`", "bcw``<ESC>P")
-
-vim.keymap.set("n", "<leader>E{", "bcW{}<ESC>P")
-vim.keymap.set("n", "<leader>E[", "bcW[]<ESC>P")
-vim.keymap.set("n", "<leader>E<", "bcW<><ESC>P")
-vim.keymap.set("n", "<leader>E'", "bcW''<ESC>P")
-vim.keymap.set("n", "<leader>E\"", "bcW\"\"<ESC>P")
-vim.keymap.set("n", "<leader>E`", "bcW``<ESC>P")
 
 -- Set current window as current root directory for searching
 vim.keymap.set("n", "<leader>sr", ":cd %:p:h<CR>")

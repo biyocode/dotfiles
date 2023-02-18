@@ -19,6 +19,12 @@ super + Print
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# restart picom
+super + alt + p
+  killall -q picom; \
+  sleep 1; \
+  picom -b
+
 ### bspwm hotkeys ###
 
 # quit/restart bspwm
@@ -39,16 +45,6 @@ super + m
 super + t
   {bspc node -t floating && window-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
 
-### state/flags ###
-
-# set the window state
-super + ctrl + {t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-
-# set the node flags
-super + ctrl + {m,x,y,z}
-	bspc node -g {marked,locked,sticky,private}
-
 ### focus/swap ###
 
 # focus the node for the given path jump
@@ -59,9 +55,10 @@ super + {p,b,comma,period}
 super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
 
-# focus the next/previous desktop in the current monitor
-super + bracket{left,right}
-	bspc desktop -f {prev,next}.local
+# cycle workspaces
+super + alt + {Left,Right}
+	bspc desktop -f {prev,next}
+	#bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
 super + {grave,Tab}
@@ -74,14 +71,10 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} ^{1-9,10}
+super + {_,shift + }{0-9}
+	bspc {desktop -f,node -d} ^{0-9}
 
 ### preselect ###
-
-# preselect the direction
-#super + ctrl + {h,j,k,l}
-#	bspc node -p {west,south,north,east}
 
 # cancel the preselection for the focused node
 super + ctrl + space
