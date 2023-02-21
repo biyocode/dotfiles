@@ -19,11 +19,15 @@ vim.opt.signcolumn = "no"
 vim.opt.scrolloff = 8
 
 -- Indenting
-vim.opt.smartindent = true
+-- vim.opt.smartindent = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.api.nvim_create_autocmd({"FileType"}, {
+    pattern = {"typescriptreact", "javascript", "css", "html", "yaml", "json"},
+    command = "setlocal shiftwidth=2 tabstop=2 expandtab=2 softtabstop=2"
+})
 
 vim.g.grepper = {tools = {"rg"}} -- This is for replace in project, ripgrep required
 vim.opt.wildignore:append{"*/node_modules/*", "*/venv/*"}
