@@ -26,7 +26,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.api.nvim_create_autocmd({"FileType"}, {
     pattern = {"typescriptreact", "javascript", "css", "html", "yaml", "json"},
-    command = "setlocal shiftwidth=2 tabstop=2 expandtab=2 softtabstop=2"
+    command = "setlocal shiftwidth=2 tabstop=2 softtabstop=2"
 })
 
 vim.g.grepper = {tools = {"rg"}} -- This is for replace in project, ripgrep required
