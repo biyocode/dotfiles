@@ -27,6 +27,7 @@ require("packer").startup(function()
     use "williamboman/mason-lspconfig.nvim" -- Mason to LSP
     use "L3MON4D3/LuaSnip"
     use "windwp/nvim-autopairs" -- Auto brackets
+    use "windwp/nvim-ts-autotag" -- Auto html tag close and stuff
     use "numToStr/Comment.nvim" -- Comment blocks
     use "lukas-reineke/indent-blankline.nvim" -- Indent vertical lines
     use({
