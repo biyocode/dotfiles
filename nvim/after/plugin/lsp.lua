@@ -36,7 +36,8 @@ local servers = {
     },
     tailwindcss = {},
     rust_analyzer = {},
-    eslint = {}
+    eslint = {},
+    bashls = {}
 }
 
 require("mason").setup()

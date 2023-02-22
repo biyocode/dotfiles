@@ -13,4 +13,3 @@ sudo luarocks install --server=https://luarocks.org/dev luaformatter
 # Linters
 sudo npm install -g eslint
 sudo npm install -g typescript typescript-language-server
-
