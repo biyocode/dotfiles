@@ -4,6 +4,8 @@ local on_attach = function(client, bufnr)
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', '<leader>ga', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>gs', vim.lsp.buf.signature_help, opts)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
     -- buf_set_keymap("n", "gd", "vim.lsp.buf.definition", opts)
