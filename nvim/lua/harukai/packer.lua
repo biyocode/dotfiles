@@ -22,6 +22,7 @@ require("packer").startup(function()
     use "hrsh7th/cmp-buffer" -- nvim-cmp source for buffer words
     use "hrsh7th/cmp-nvim-lsp" -- nvim-cmp source for neovim"s built-in LSP
     use "hrsh7th/nvim-cmp" -- Completion
+    use "hrsh7th/cmp-nvim-lsp-signature-help" -- Show doc signature when opening function bracket
     use "neovim/nvim-lspconfig" -- LSP
     use "williamboman/mason.nvim" -- LSP Manager
     use "williamboman/mason-lspconfig.nvim" -- Mason to LSP
