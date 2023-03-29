@@ -13,6 +13,7 @@ require("packer").startup(function()
     use("nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"}) -- Text highlighting
     use "mbbill/undotree" -- Undo history
     use "jose-elias-alvarez/null-ls.nvim"
+    use "lukas-reineke/lsp-format.nvim"
     use "mhinz/vim-grepper" -- Project replace all tool
     use({
         "akinsho/nvim-bufferline.lua",
@@ -36,4 +37,5 @@ require("packer").startup(function()
         branch = "main",
         requires = {{"nvim-treesitter/nvim-treesitter"}}
     })
+    use "dstein64/vim-startuptime"
 end)

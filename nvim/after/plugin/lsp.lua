@@ -4,13 +4,13 @@ local on_attach = function(client, bufnr)
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', '<leader>ga', vim.lsp.buf.code_action, opts)
+    -- vim.keymap.set('n', '<leader>ga', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<leader>gs', vim.lsp.buf.signature_help, opts)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
     -- buf_set_keymap("n", "gd", "vim.lsp.buf.definition", opts)
     -- buf_set_keymap("n", "gi", "vim.lsp.buf.implementation", opts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    -- vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -32,6 +32,7 @@ local servers = {
         }
     },
     pyright = {},
+    ruff_lsp = {},
     tsserver = {
         filetypes = {"typescript", "typescriptreact", "typescript.tsx"},
         cmd = {"typescript-language-server", "--stdio"}
