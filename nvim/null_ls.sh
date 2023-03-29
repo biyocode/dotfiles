@@ -3,6 +3,8 @@
 # python autoformatter
 pip install black
 pip install --upgrade autopep8
+pip install ruff
+pip install ruff-lsp
 
 # frontend autoformatter
 sudo npm install -g prettier_d_slim
