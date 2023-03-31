@@ -32,3 +32,5 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 vim.g.grepper = {tools = {"rg"}} -- This is for replace in project, ripgrep required
 vim.opt.wildignore:append{"*/node_modules/*", "*/venv/*"}
 vim.opt.path:append{"**"} -- find files down subfolders
+vim.g.python_host_prog = "/usr/bin/python2"
+vim.g.python3_host_prog = "/usr/bin/python3"

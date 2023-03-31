@@ -38,4 +38,5 @@ require("packer").startup(function()
         requires = {{"nvim-treesitter/nvim-treesitter"}}
     })
     use "dstein64/vim-startuptime"
+    use "ms-jpq/coq_nvim"
 end)

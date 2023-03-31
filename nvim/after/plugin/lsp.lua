@@ -13,8 +13,6 @@ local on_attach = function(client, bufnr)
     -- vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 end
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 local servers = {
     lua_ls = {
         Lua = {
@@ -46,6 +44,9 @@ local servers = {
 require("mason").setup()
 
 local mason_lspconfig = require("mason-lspconfig")
+local coq = require("coq")
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+-- local capabilities = coq.lsp_ensure_capabilities()
 
 mason_lspconfig.setup {ensure_installed = vim.tbl_keys(servers)}
 mason_lspconfig.setup_handlers {
