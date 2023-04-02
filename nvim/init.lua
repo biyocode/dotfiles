@@ -15,3 +15,5 @@ vim.api.nvim_create_autocmd({"BufNewFile"}, {
 --   - % in pv creates a new file in the directory
 --   - D deletes file
 -- :so = sourcing root file
+--
+-- Hoverdocs: CTRL-f = forward, CTRL-d = backwards
