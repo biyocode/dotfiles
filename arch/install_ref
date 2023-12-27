@@ -6,12 +6,20 @@ sudo pacman -S git firefox xorg-server xorg-xinput xorg-xinit xorg-xset xorg-xse
 
 # fn keys, check dotfiles/acpid
 sudo pacman -S acpid
+sudo systemctl start acpid
+sudo systemctl enable acpid
 
-#audio
-# i think sof-firmware is required for asus zenbook UX325E
-# audio should just work after installing
-# run alsamixer to change volume in terminal
+# audio
+## i think sof-firmware is required for asus zenbook UX325E
+## audio should just work after installing
+## run alsamixer to change volume in terminal
 sudo pacman -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa sof-firmware
+
+# bluetooth
+## bluetooth audio should automatically switch sinks
+sudo pacman -S bluez bluez-utils
+sudo systemctl start bluetooth.service
+sudo systemctl enable bluetooth.service
 
 # dev stuff
 sudo pacman -S neovim kitty npm rust

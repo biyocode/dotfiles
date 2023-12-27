@@ -167,6 +167,7 @@ cmp.setup({
         { name = "luasnips" },
         { name = "buffer" },
         { name = "nvim_lsp_signature_help" },
+        { name = "path" },
     },
 })
 local capabilities = require("cmp_nvim_lsp").default_capabilities()

@@ -25,7 +25,10 @@ Bluetooth:
     - `list`: lists devices
     - `connect <mac address>`: connect to your device
     - `help`: more commands
+Audio:
+  - `alsamixer`: terminal control of volume
+
 ## TODO
 - Multiple Monitor setup
-- Bluetooth
+- better bluetooth management
 - Wifi script?
