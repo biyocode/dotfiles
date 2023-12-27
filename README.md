@@ -14,3 +14,18 @@
  - Misc: exa, bat
  - Lockscreen: betterlockscreen
  - Password Manager: pass
+
+## Commands
+Wifi:
+  - `nmtui`
+Bluetooth:
+  - `bluetoothctl`
+    - `scan on`: scans for new devices
+    - `scan off`: turn off scan, do this after you don't need to scan anymore
+    - `list`: lists devices
+    - `connect <mac address>`: connect to your device
+    - `help`: more commands
+## TODO
+- Multiple Monitor setup
+- Bluetooth
+- Wifi script?
