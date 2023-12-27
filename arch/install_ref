@@ -1,0 +1,53 @@
+# USE AS REFERENCE, DONT RUN
+#
+# needed packages after installing arch
+# make sure your'e not root when running
+sudo pacman -S git firefox xorg-server xorg-xinput xorg-xinit xorg-xset xorg-xsetroot neofetch feh rofi pass bat ripgrep fd polybar man-db xclip flameshot peek tumbler
+
+# dev stuff
+sudo pacman -S neovim kitty npm rust
+## python
+sudo pacman -S tk
+curl https://pyenv.run | bash
+
+# japanese fonts
+sudo pacman -S adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts otf-ipafont 
+
+# fonts and symbols for nvim
+sudo pacman -S ttf-nerd-fonts-symbols ttf-fira-code
+
+yay -S picom-git
+
+sudo pacman -S bspwm xdo sxhkd
+
+# check https://wiki.archlinux.org/title/Xorg : driver installation
+sudo pacman -S xf86-video-intel mesa vulkan-intel
+
+# installing yay
+sudo git clone https://aur.archlinux.org/yay.git /opt
+sudo chown -R username:username /opt/yay
+cd /opt/yay;makepkg -si
+
+# after setting up X
+
+## test with exa -la, set this in bashrc alias for ll and stuff
+sudo pacman -S exa
+sudo pacman -S starship
+
+# database
+sudo pacman -S postgresql dbeaver
+
+# gtk3.0 theme
+# https://github.com/phisch/phinger-cursors
+yay -S juno-ocean-gtk-theme-git phinger-cursors
+
+# lockscreen
+# https://github.com/betterlockscreen/betterlockscreen
+yay -S betterlockscreen
+
+# bash auto complete
+# https://github.com/scop/bash-completion
+sudo pacman -S bash-completion
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
