@@ -1,0 +1,15 @@
+[Unit]
+Description=Lockscreen
+Before=sleep.target
+Before=suspend.target
+
+[Service]
+Type=simple
+User=username
+Environment=DISPLAY=:0
+ExecStart=/bin/betterlockscreen -l
+ExecStartPost=/usr/bin/sleep 1
+
+[Install]
+WantedBy=sleep.target
+WantedBy=suspend.target

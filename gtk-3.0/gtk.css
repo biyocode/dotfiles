@@ -2,11 +2,11 @@
   background: none;
 }
 .thunar .sidebar {
-  background: none;
+  background: rgba(21,24,40,0.3);
 }
 .thunar toolbar {
   background: rgba(21,24,40,0.3);
 }
-window.thunar paned > scrolledwindow treeview.view {
+.thunar .sidebar .view {
   background: rgba(21,24,40,0.3);
 }
