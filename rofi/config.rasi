@@ -1,7 +1,12 @@
+configuration {
+  show-icons: true;
+  font: "Fira Code Retina 11";
+  display-drun: "";
+}
+
 * {
-  background-color: #06081315;
+  background-color: #0A041835;
   text-color: #E9E9E9;
-  font: "Fira Code Retina 10";
   spacing: 0;
   width: 712px;
   height: 360px;
@@ -10,14 +15,14 @@
 
 window {
   border: 1px;
-  border-color: #060813;
+  border-color: #BF9FD8;
 }
 
 inputbar {
   border: 0 0 1px 0;
   children: [prompt,entry];
-  border-color: #060813;
-  border-radius:0px;
+  border-color: #BF9FD8;
+  border-radius: 0px;
 }
 
 prompt {
@@ -25,7 +30,7 @@ prompt {
   border-radius:0px;
   border: 0 1px 0 0;
   border-color: #060813;
-  text-color: #FFBB53;
+  text-color: #E5C38F;
 }
 
 textbox {
@@ -36,11 +41,12 @@ textbox {
   border-radius:0px;
 }
 
+/* search bar */
 entry {
   padding: 16px;
   border-radius:0px;
   border: 0;
-  text-color: #74EDE2;
+  text-color: #E5C38F;
 }
 
 listview {
@@ -54,11 +60,19 @@ listview {
 element {
   border: 0;
   padding: 20px;
-  border-radius:0px;
+  border-radius: 0px;
+  spacing: 1em; /* gap between element-text and element-icon */
+}
+
+element-text {
+  background-color: #0A041800;
+  color: #E5C38F;
+}
+element-icon {
 }
 
 element selected {
-  background-color: #545EC020;
+  background-color: #BF9FD820;
   border-radius:0px;
   border: 0;
 }
