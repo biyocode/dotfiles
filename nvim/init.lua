@@ -24,6 +24,10 @@ require("lazy").setup({
     },
     -- theme
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" }
+    },
     -- add indent lines
     { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
     {
@@ -225,9 +229,23 @@ require("nvim-ts-autotag").setup({
 
 -- theme
 require("catppuccin").setup({
-    transparent_background = true
+    compile_path = vim.fn.stdpath "cache" .. "/catppuccin",
+    flavour = "macchiato",
+    transparent_background = true,
+    integrations = {
+        cmp = true,
+        treesitter = true,
+    },
+    telescope = {
+        enabled = true,
+    }
 })
 vim.cmd.colorscheme "catppuccin"
+-- end theme
+
+-- lualine
+require("lualine").setup({})
+-- end lualine
 
 -- telescope
 require("telescope").setup({
@@ -248,10 +266,12 @@ vim.keymap.set('n', '<C-f>', function()
         print("Not a git project. Try running git init in root.")
     end
 end)
+-- end telescope
 
 -- commenter
 local ft = require('Comment.ft')
 ft.set("typescriptreact", "{/* %s */}")
+-- end commenter
 
 -- nvim spectre search and replace
 vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {

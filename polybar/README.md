@@ -1,1 +1,1 @@
-~/.config/polybar/config
+~/.config/polybar/config.ini

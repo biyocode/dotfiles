@@ -22,7 +22,7 @@ disabled = false
 [directory]
 read_only = "🔒"
 read_only_style= "bold white"
-style = "fg:#A7F3E4"
+style = "fg:#E5C38F"
 
 [docker_context]
 format = "via [🐋 $context](blue bold)"

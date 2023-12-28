@@ -28,6 +28,11 @@ Bluetooth:
 Audio:
   - `alsamixer`: terminal control of volume
 
+## Some settings
+- Icons
+  - `~/.config/gtk-3.0/settings.ini`
+  - `/usr/share/icons/*`
+
 ## TODO
 - Multiple Monitor setup
 - better bluetooth management
