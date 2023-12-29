@@ -22,6 +22,8 @@ function gcom() {
     git commit -m "$GITMESSAGE"
 }
 
+alias neofetch='neofetch --backend kitty --source /home/kokopi/pictures/neofetch_0.png --size 320'
+
 bind 'TAB:menu-complete'
 bind 'set show-all-if-ambiguous on'
 eval "$(starship init bash)"
@@ -41,3 +43,4 @@ export FZF_CTRL_T_OPTS="
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
