@@ -184,11 +184,22 @@ lspconfig.html.setup { capabilities=capabilities }
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+-- ## lsp diagnostics
 -- virtual_text = inline diagnostics
 vim.diagnostic.config({virtual_text = false})
+
+-- apply global float border
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or border "FloatBorder"
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 -- show diagnostics on cursor hover
 vim.o.updatetime = 250
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+-- ## end lsp diagnostics
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
