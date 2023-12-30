@@ -91,6 +91,9 @@ require("lazy").setup({
         "L3MON4D3/LuaSnip",
         event = { "InsertEnter", "CmdlineEnter" }
     },
+    {
+        "saadparwaiz1/cmp_luasnip"
+    },
     -- html auto tags
     -- https://github.com/windwp/nvim-ts-autotag
     {
@@ -125,6 +128,11 @@ lspconfig.lua_ls.setup {
        }
    }
 }
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
 local function border(hl_name)
     return {
         {"╭", hl_name}, {"─", hl_name}, {"╮", hl_name}, {"│", hl_name},
@@ -152,6 +160,8 @@ cmp.setup({
                 cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
+            elseif has_words_before() then
+                cmp.complete()
             else
                 fallback()
             end
@@ -168,7 +178,7 @@ cmp.setup({
     },
     sources = {
         { name = "nvim_lsp" },
-        { name = "luasnips" },
+        { name = "luasnip" },
         { name = "buffer" },
         { name = "nvim_lsp_signature_help" },
         { name = "path" },
@@ -198,7 +208,7 @@ end
 
 -- show diagnostics on cursor hover
 vim.o.updatetime = 250
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua if not vim.fn.pumvisible() then vim.diagnostic.open_float(nil, {focus=false}) end]]
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua if not require("cmp").visible() then vim.diagnostic.open_float(nil, {focus=false}) end]]
 -- ## end lsp diagnostics
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
