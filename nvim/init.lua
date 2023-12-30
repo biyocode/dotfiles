@@ -198,7 +198,7 @@ end
 
 -- show diagnostics on cursor hover
 vim.o.updatetime = 250
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua if not vim.fn.pumvisible() then vim.diagnostic.open_float(nil, {focus=false}) end]]
 -- ## end lsp diagnostics
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
