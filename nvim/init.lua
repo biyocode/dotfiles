@@ -112,22 +112,10 @@ require("mason-lspconfig").setup {
         "ruff_lsp",
         "pyright",
         "tailwindcss",
-        "htmx",
         "tsserver",
         "html"
     },
     automatic_installation = false
-}
-local lspconfig = require('lspconfig')
-lspconfig.lua_ls.setup {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim" }
-            },
-            telemetry = { enable = false }
-        }
-    }
 }
 local has_words_before = function()
     unpack = unpack or table.unpack
@@ -185,8 +173,47 @@ cmp.setup({
         { name = "path" },
     },
 })
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-lspconfig.ruff_lsp.setup { capabilities = capabilities }
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+local lspconfig = require('lspconfig')
+lspconfig.lua_ls.setup {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { "vim" }
+            },
+            telemetry = { enable = false },
+            workspace = { checkThirdParty = false },
+            hint = { enable = true }
+        }
+    }
+}
+lspconfig.ruff_lsp.setup { capabilities = capabilities,
+    commands = {
+        -- RuffAutofix = {
+        --     function()
+        --         vim.lsp.buf.execute_command {
+        --             command = 'ruff.applyAutofix',
+        --             arguments = {
+        --                 { uri = vim.uri_from_bufnr(0) },
+        --             },
+        --         }
+        --     end,
+        --     description = 'Ruff: Fix all auto-fixable problems',
+        -- },
+        RuffOrganizeImports = {
+            function()
+                vim.lsp.buf.execute_command {
+                    command = 'ruff.applyOrganizeImports',
+                    arguments = {
+                        { uri = vim.uri_from_bufnr(0) },
+                    },
+                }
+            end,
+            description = 'Ruff: Format imports',
+        },
+    },
+}
 lspconfig.pyright.setup { capabilities = capabilities }
 lspconfig.tailwindcss.setup { capabilities = capabilities }
 lspconfig.htmx.setup { capabilities = capabilities }
@@ -217,17 +244,33 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
+-- auto on_attach on lspconfig server setup
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
         -- Enable completion triggered by <c-x><c-o>
-        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+        if client.server_capabilities.completionProvider then
+            vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+        end
+        if client.server_capabilities.definitionProvider then
+            vim.bo[ev.buf].tagfunc = "v:lua.vim.lsp.tagfunc"
+        end
+
+        local opts = { noremap = true, silent = true, buffer = ev.buf }
+
+        -- formatting
+        local method = "textDocument/formatting"
+        if client.supports_method(method) then
+            vim.keymap.set('n', '<leader>F', function()
+                vim.lsp.buf.format { async = true }
+            end, opts)
+        end
 
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local opts = { buffer = ev.buf }
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
@@ -242,9 +285,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', '<leader>F', function()
-            vim.lsp.buf.format { async = true }
-        end, opts)
     end,
 })
 -- end lsp stuff

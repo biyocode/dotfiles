@@ -1,6 +1,4 @@
-# TODO
-
-- clean up settings and remap
+# Neovim
 
 ## Common Commands
 
@@ -9,3 +7,12 @@ Normal Mode:
 - `K`: check type
 - `<leader>ca` : code action
 - `<leader>fg` : live grep from currently dir
+
+## Debugging
+
+- vim print in nvim:
+    `lua vim.print(vim.lsp.get_active_clients({name = 'pyright'})[1])`
+
+## TODO
+- figure out better formatting and linting solution
+- clean up settings and remap
