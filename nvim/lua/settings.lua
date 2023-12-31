@@ -35,3 +35,6 @@ vim.opt.path:append{"**"} -- find files down subfolders
 vim.g.python_host_prog = "/usr/bin/python2"
 vim.g.python3_host_prog = "/usr/bin/python3"
 
+-- skeletons
+vim.cmd [[autocmd BufNewFile *.py 0r ~/.config/nvim/templates/skeleton.py]]
+vim.cmd [[autocmd BufNewFile *.sh 0r ~/.config/nvim/templates/skeleton.sh]]
