@@ -216,7 +216,6 @@ lspconfig.ruff_lsp.setup { capabilities = capabilities,
 }
 lspconfig.pyright.setup { capabilities = capabilities }
 lspconfig.tailwindcss.setup { capabilities = capabilities }
-lspconfig.htmx.setup { capabilities = capabilities }
 lspconfig.tsserver.setup { capabilities = capabilities }
 lspconfig.html.setup { capabilities = capabilities }
 

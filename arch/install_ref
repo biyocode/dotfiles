@@ -17,7 +17,8 @@ sudo pacman -S pulseaudio pulseaudio-bluetooth pulseaudio-alsa sof-firmware
 
 # bluetooth
 ## bluetooth audio should automatically switch sinks
-sudo pacman -S bluez bluez-utils
+## blueman is the GUI, rofi or blueman-manager in terminal
+sudo pacman -S bluez bluez-utils blueman
 sudo systemctl start bluetooth.service
 sudo systemctl enable bluetooth.service
 
@@ -29,6 +30,16 @@ curl https://pyenv.run | bash
 
 # japanese fonts
 sudo pacman -S adobe-source-han-sans-jp-fonts adobe-source-han-serif-jp-fonts otf-ipafont 
+
+# japanese input
+## https://wiki.archlinux.org/title/Input_Japanese_using_ibus
+## check docs for setting up the systemd services
+## user systemctl control: systemctl --user enable ibus.service
+## ibus-setup will need to use the system python
+## run: PYTHON=/usr/bin/python ibus-setup
+## clicking the keyboard icon on current polybar will open it
+## PC will need to reboot after setting up
+sudo pacman -S ibus-anthy
 
 # fonts and symbols for nvim
 sudo pacman -S ttf-nerd-fonts-symbols ttf-fira-code
@@ -46,6 +57,10 @@ sudo chown -R username:username /opt/yay
 cd /opt/yay;makepkg -si
 
 # after setting up X
+
+# https://wiki.archlinux.org/title/Desktop_notifications
+## setup the service in /usr/share/dbus-1/services
+sudo pacman -S notification-daemon
 
 ## test with exa -la, set this in bashrc alias for ll and stuff
 sudo pacman -S exa
