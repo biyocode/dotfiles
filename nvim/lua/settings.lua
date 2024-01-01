@@ -25,7 +25,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.api.nvim_create_autocmd({"FileType"}, {
-    pattern = {"typescriptreact", "javascript", "css", "html", "yaml", "json", "md"},
+    pattern = {"typescriptreact", "javascript", "css", "html", "yaml", "json", "md", "toml"},
     command = "setlocal shiftwidth=2 tabstop=2 softtabstop=2"
 })
 
