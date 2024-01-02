@@ -223,7 +223,7 @@ lspconfig.tailwindcss.setup { capabilities = capabilities,
             experimental = {
                 -- this will capture any variable name with *Css = ""
                 classRegex = {
-                    "Css\\s*=\\s*['\"`]([^'\"`]*)['\"`]"
+                    "Css = ['\"`]([^']*)['\"`]"
                 }
             }
         }
