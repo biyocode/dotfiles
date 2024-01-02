@@ -23,12 +23,13 @@ require("lazy").setup({
         tag = "0.1.5",
         dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" }
     },
-    -- theme
+    -- looks
     { "catppuccin/nvim",                     name = "catppuccin", priority = 1000 },
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" }
     },
+    { 'akinsho/bufferline.nvim',             version = "*",       dependencies = 'nvim-tree/nvim-web-devicons' },
     -- add indent lines
     { "lukas-reineke/indent-blankline.nvim", main = "ibl",        opts = {} },
     {
@@ -322,6 +323,14 @@ require("catppuccin").setup({
 })
 vim.cmd.colorscheme "catppuccin"
 -- end theme
+
+-- bufferline
+require("bufferline").setup({
+    options = { mode = "tabs", separator_style = "thin" },
+})
+vim.keymap.set("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", {})
+vim.keymap.set("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", {})
+-- end bufferline
 
 -- lualine
 require("lualine").setup({})
