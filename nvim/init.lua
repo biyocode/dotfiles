@@ -216,7 +216,18 @@ lspconfig.ruff_lsp.setup { capabilities = capabilities,
     },
 }
 lspconfig.pyright.setup { capabilities = capabilities }
-lspconfig.tailwindcss.setup { capabilities = capabilities }
+lspconfig.tailwindcss.setup { capabilities = capabilities,
+    settings = {
+        tailwindCSS = {
+            experimental = {
+                -- this will capture any variable name with *Css = ""
+                classRegex = {
+                    "Css\\s*=\\s*['\"`]([^'\"`]*)['\"`]"
+                }
+            }
+        }
+    },
+}
 lspconfig.tsserver.setup { capabilities = capabilities }
 lspconfig.html.setup { capabilities = capabilities }
 lspconfig.bashls.setup { capabilities = capabilities }
