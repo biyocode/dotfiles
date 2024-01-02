@@ -2,14 +2,16 @@
 Description=Lockscreen
 Before=sleep.target
 Before=suspend.target
+Before=hibernate.target
 
 [Service]
 Type=simple
-User=username
+User=kokopi
 Environment=DISPLAY=:0
 ExecStart=/bin/betterlockscreen -l
-ExecStartPost=/usr/bin/sleep 1
+ExecStartPost=systemctl suspend-then-hibernate
 
 [Install]
 WantedBy=sleep.target
 WantedBy=suspend.target
+WantedBy=hibernate.target

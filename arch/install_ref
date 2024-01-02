@@ -2,7 +2,7 @@
 #
 # needed packages after installing arch
 # make sure your'e not root when running
-sudo pacman -S git firefox xorg-server xorg-xinput xorg-xinit xorg-xset xorg-xsetroot neofetch feh rofi pass rsync bat ripgrep fd polybar man-db xclip flameshot peek tumbler thunar
+sudo pacman -S git firefox xorg-server xorg-xinput xorg-xinit xorg-xset xorg-xsetroot neofetch feh rofi pass rsync bat ripgrep fd polybar man-db xclip flameshot peek tumbler thunar unzip
 
 # fn keys, check dotfiles/acpid
 sudo pacman -S acpid
@@ -85,5 +85,9 @@ yay -S betterlockscreen
 # https://github.com/scop/bash-completion
 sudo pacman -S bash-completion
 
+# fzf, ctrl+t in term
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+# bun
+curl -fsSL https://bun.sh/install | bash

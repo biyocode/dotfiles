@@ -29,12 +29,7 @@ Each folder should have a README of some tips.
 Wifi:
   - `nmtui`
 Bluetooth:
-  - `bluetoothctl`
-    - `scan on`: scans for new devices
-    - `scan off`: turn off scan, do this after you don't need to scan anymore
-    - `list`: lists devices
-    - `connect <mac address>`: connect to your device
-    - `help`: more commands
+  - `blueman-manager`
 Audio:
   - `alsamixer`: terminal control of volume
 
@@ -43,9 +38,11 @@ Audio:
   - `~/.config/gtk-3.0/settings.ini`
   - `/usr/share/icons/*`
 
+## Useful wikis
+- NVME storage: https://wiki.archlinux.org/title/Solid_state_drive/NVMe
+
 ## TODO
 - Multiple Monitor setup
-- better bluetooth management
 - Wifi script?
 - Test mic
 - Auto detect usb mounts

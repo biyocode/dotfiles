@@ -9,6 +9,11 @@ sleep 0.2
 kitten @ send-text --match "title:^biyocode_tww" "cd ~/00/biyocode-main\n./tww.sh watch\n"
 sleep 0.2
 
+kitten @ launch --type=tab --title "biyocode_content"
+sleep 0.2
+kitten @ send-text --match "title:^biyocode_content" "cd ~/00/biyocode-main/content\nclear\n"
+sleep 0.2
+
 kitten @ launch --type=tab --title "biyocode_code"
 sleep 0.2
 kitten @ send-text --match "title:^biyocode_code" "cd ~/00/biyocode-main\nclear\n"

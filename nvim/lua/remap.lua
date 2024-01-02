@@ -38,6 +38,3 @@ vim.keymap.set("n", "<leader>e`", "bcw``<ESC>P")
 
 -- Set current window as current root directory for searching
 vim.keymap.set("n", "<leader>sr", ":cd %:p:h<CR>")
--- Rename in file only
-vim.keymap.set("n", "<leader>r",
-               "/<left><left><C-r><C-w><CR>:%s///g<Left><Left>")

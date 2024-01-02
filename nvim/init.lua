@@ -109,6 +109,7 @@ require("mason").setup()
 require("mason-lspconfig").setup {
     ensure_installed = {
         "lua_ls",
+        "bashls",
         "ruff_lsp",
         "pyright",
         "tailwindcss",
@@ -218,6 +219,7 @@ lspconfig.pyright.setup { capabilities = capabilities }
 lspconfig.tailwindcss.setup { capabilities = capabilities }
 lspconfig.tsserver.setup { capabilities = capabilities }
 lspconfig.html.setup { capabilities = capabilities }
+lspconfig.bashls.setup { capabilities = capabilities }
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
