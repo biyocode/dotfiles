@@ -1,8 +1,12 @@
 # USE AS REFERENCE, DONT RUN
-#
+
+# SSD maintenance
+sudo systemctl enable fstrim.timer
+sudo systemctl start fstrim.timer
+
 # needed packages after installing arch
 # make sure your'e not root when running
-sudo pacman -S git firefox xorg-server xorg-xinput xorg-xinit xorg-xset xorg-xsetroot neofetch feh rofi pass rsync bat ripgrep fd polybar man-db xclip flameshot peek tumbler thunar unzip
+sudo pacman -S git firefox xorg-server xorg-xinput xorg-xinit xorg-xset xorg-xsetroot neofetch feh rofi pass rsync bat ripgrep fd polybar man-db xclip flameshot peek screenkey tumbler thunar unzip
 
 # fn keys, check dotfiles/acpid
 sudo pacman -S acpid
