@@ -6,7 +6,7 @@ sudo systemctl start fstrim.timer
 
 # needed packages after installing arch
 # make sure your'e not root when running
-sudo pacman -S git firefox xorg-server xorg-xinput xorg-xinit xorg-xset xorg-xsetroot neofetch feh rofi pass rsync bat ripgrep fd polybar man-db xclip flameshot peek screenkey tumbler thunar unzip
+sudo pacman -S git firefox xorg-server xorg-xinput xorg-xinit xorg-xset xorg-xsetroot neofetch feh rofi pass rsync bat ripgrep fd polybar man-db xclip flameshot peek screenkey tumbler thunar unzip polkit
 
 # fn keys, check dotfiles/acpid
 sudo pacman -S acpid
@@ -95,3 +95,11 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 # bun
 curl -fsSL https://bun.sh/install | bash
+
+# bazecor
+# install bazecor
+# chmod u+x Bazecor...
+# ./Bazecor... --appimage-extract
+# sudo cp -r usr/* /usr
+# move the icon into applications folder
+# move Bazecor.Desktop to .local/share/applications

@@ -7,7 +7,13 @@ killall -q polybar
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+if [[ $(xrandr -q | grep -w connected | grep "HDMI1") ]]
+then
+  bspc monitor HDMI1 -d 1 2 3 4 5
+  bspc monitor eDP1 -d 6 7 8 9
+else
+  bspc monitor eDP1 -d 1 2 3 4 5 6 7 8 9
+fi
 
 # borders
 bspc config border_width         2
@@ -35,3 +41,9 @@ picom -b
 ## polybar
 polybar leftbar &
 polybar rightbar &
+
+if [[ $(xrandr -q | grep -w connected | grep "HDMI1") ]]
+then
+  polybar leftbar2 &
+  polybar rightbar2 &
+fi

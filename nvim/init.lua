@@ -72,6 +72,7 @@ require("lazy").setup({
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
+				autotag = { enable = true },
 			})
 		end,
 	},
@@ -142,6 +143,7 @@ require("mason-lspconfig").setup({
 		"tailwindcss",
 		"tsserver",
 		"html",
+		"emmet_ls", -- for cmp mainly, helps with auto quotes in html
 	},
 	automatic_installation = false,
 })
@@ -178,6 +180,11 @@ cmp.setup({
 		end,
 	},
 	mapping = {
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }), -- <CR> = enter key
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -266,6 +273,8 @@ lspconfig.tailwindcss.setup({
 lspconfig.tsserver.setup({ capabilities = capabilities })
 lspconfig.html.setup({ capabilities = capabilities })
 lspconfig.bashls.setup({ capabilities = capabilities })
+lspconfig.emmet_ls.setup({ capabilities = capabilities })
+lspconfig.eslint.setup({ capabilities = capabilities })
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -339,9 +348,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- end lsp stuff
 
 -- html auto tags
-require("nvim-ts-autotag").setup({
-	filetypes = { "html", "xml" },
-})
+require("nvim-ts-autotag").setup({})
 -- end html auto tags
 
 -- theme

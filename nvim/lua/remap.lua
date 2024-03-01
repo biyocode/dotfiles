@@ -3,6 +3,8 @@ vim.g.mapleader = " "
 -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 -- Open project folder view
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- Set current window as current root directory for searching
+vim.keymap.set("n", "<leader>sr", ":cd %:p:h<CR>")
 
 -- Split window movement
 vim.keymap.set("n", "<A-Left>", "<C-w>h")
@@ -18,6 +20,8 @@ vim.keymap.set("n", "<A-q>", ":bd<CR>") -- quit
 
 -- Makes shift+j not move cursor to the end
 vim.keymap.set("n", "J", "mzJ`z")
+-- collapse a tag with the cursor at the start of the tag
+vim.keymap.set("n", "<leader>j", "gJdw:j!<CR>", {silent=true})
 
 -- nnoremap <silent> <C-l> :nohl<CR><C-l>
 -- vim.keymap.set("n", "<C-l>", vim.cmd(":nohl<CR><C-l>"))
@@ -36,5 +40,7 @@ vim.keymap.set("n", "<leader>e'", "bcw''<ESC>P")
 vim.keymap.set("n", "<leader>e\"", "bcw\"\"<ESC>P")
 vim.keymap.set("n", "<leader>e`", "bcw``<ESC>P")
 
--- Set current window as current root directory for searching
-vim.keymap.set("n", "<leader>sr", ":cd %:p:h<CR>")
+-- vertical movements
+-- center cursor after going up or down
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
